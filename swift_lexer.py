@@ -12,7 +12,7 @@ t_ENTER = r'\n'
 t_PLUS    = r'\+'
 t_MINUS   = r'-'
 t_TIMES   = r'\*'
-t_DIVIDE  = r'/'
+#t_DIVIDE  = r'/'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_LBRACE = r'{'
@@ -32,6 +32,12 @@ def t_ID(t):
 	r'[a-z|A-Z][a-z|A-Z|0-9]*'
 	t.type = reserved.get(t.value,'ID')
 	return t
+
+def t_singleLine(t):
+	r'//.*\n'
+
+def t_multiLine(t):
+	r'/\*[^(*/)]*\*/\n'
 
 lexer = lex.lex(debug=1)
 
