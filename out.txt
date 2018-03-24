@@ -1,0 +1,78 @@
+var a = 2
+func a(c: Int,d: Int) -> Int {
+var b = 2
+}
+for i in 1...2 {
+var c = 2
+}
+
+
+
+ Tokens
+Reading from standard input (type EOF to end):
+(VAR,'var',1,0)
+(WHITESPACE,' ',1,3)
+(ID,'a',1,4)
+(WHITESPACE,' ',1,5)
+(EQ,'=',1,6)
+(WHITESPACE,' ',1,7)
+(NUMBER,2,1,8)
+(ENTER,'\n',1,9)
+(FUNC,'func',1,10)
+(WHITESPACE,' ',1,14)
+(ID,'a',1,15)
+(LPAREN,'(',1,16)
+(ID,'c',1,17)
+(COL,':',1,18)
+(WHITESPACE,' ',1,19)
+(TYPE,'Int',1,20)
+(COMMA,',',1,23)
+(ID,'d',1,24)
+(COL,':',1,25)
+(WHITESPACE,' ',1,26)
+(TYPE,'Int',1,27)
+(RPAREN,')',1,30)
+(WHITESPACE,' ',1,31)
+(ARROW,'->',1,32)
+(WHITESPACE,' ',1,34)
+(TYPE,'Int',1,35)
+(WHITESPACE,' ',1,38)
+(LBRACE,'{',1,39)
+(ENTER,'\n',1,40)
+(VAR,'var',1,47)
+(WHITESPACE,' ',1,50)
+(ID,'b',1,51)
+(WHITESPACE,' ',1,52)
+(EQ,'=',1,53)
+(WHITESPACE,' ',1,54)
+(NUMBER,2,1,55)
+(ENTER,'\n',1,56)
+(RBRACE,'}',1,74)
+(ENTER,'\n',1,75)
+(FOR,'for',1,76)
+(WHITESPACE,' ',1,79)
+(ID,'i',1,80)
+(WHITESPACE,' ',1,81)
+(IN,'in',1,82)
+(WHITESPACE,' ',1,84)
+(NUMBER,1,1,85)
+(TRIPLEDOT,'...',1,86)
+(NUMBER,2,1,89)
+(WHITESPACE,' ',1,90)
+(LBRACE,'{',1,91)
+(ENTER,'\n',1,92)
+(VAR,'var',1,93)
+(WHITESPACE,' ',1,96)
+(ID,'c',1,97)
+(WHITESPACE,' ',1,98)
+(EQ,'=',1,99)
+(WHITESPACE,' ',1,100)
+(NUMBER,2,1,101)
+(ENTER,'\n',1,102)
+(RBRACE,'}',1,103)
+(ENTER,'\n',1,104)
+
+
+Symbol Table
+
+defaultdict(<function <lambda> at 0x7efd20f8dbf8>, {'c': {'value': 2, 'type': 'Int'}, 'a': {'value': 2, 'type': 'Int'}, 'b': {'value': 2, 'type': 'Int'}})

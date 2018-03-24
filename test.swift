@@ -6,3 +6,6 @@ var b = 2
 /* wh
 a */
 }
+for i in 1...2 {
+var c = 2
+}
