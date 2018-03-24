@@ -55,9 +55,8 @@ Will update
 
 * [Aviral Joshi](https://github.com/dataviral) 
 * [Bhaarat Chetty](https://github.com/bhaaratchetty) 
-* [Daniel I](https://github.com/danny311296) 
 * [Chirag Ramesh](https://github.com/chiggy97)
-
+* [Daniel I](https://github.com/danny311296) 
 
 ## Acknowledgments
 
