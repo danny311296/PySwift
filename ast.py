@@ -23,3 +23,8 @@ class ASTExpressionNode:
 		self.idNo = idNo
 	def __str__(self):
 		return "Node ID " + str(self.idNo) + " operation " + self.o  + " on " + str(self.l) + " " + str(self.r) 
+
+class ASTFunctionDefinationNode:
+	def __init__(self,name,statements):
+		self.name = name
+		self.statements = statements

@@ -1,11 +1,26 @@
 Node 
 		---expression
-		---Node ID 2610233683 operation + on 2 3
+		---Node ID 3032718510 operation * on 3 4
 Node 
-		---assign
-		---Node ID 2610233684 a     Node 
 		---expression
-		---Node ID 2610233683 operation + on 2 3
+		---Node ID 3032718511 operation + on 2 Node 
+		---expression
+		---Node ID 3032718510 operation * on 3 4
 Node 
 		---assign
-		---Node ID 2610233685 b     45
+		---Node ID 3032718512 a     Node 
+		---expression
+		---Node ID 3032718511 operation + on 2 Node 
+		---expression
+		---Node ID 3032718510 operation * on 3 4
+Node 
+		---assign
+		---Node ID 3032718513 b     45
+Node 
+		---expression
+		---Node ID 3032718514 operation / on 3 4
+Node 
+		---assign
+		---Node ID 3032718515 c     Node 
+		---expression
+		---Node ID 3032718514 operation / on 3 4

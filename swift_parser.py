@@ -19,22 +19,27 @@ unique_sequence = uniqueid()
 def p_start(p):
 	'''start : statements 
 			| empty'''
+	#p[0] = p[1]
+	#print(node,file=astFile)
 
 def p_empty(p):
 	'empty :'
-	pass
+	p[0] = ''
 
 def p_statements(p):
 	'statements : statement ENTER next_statement'
+	#p[0] = 
 
 def p_next_statement(p):
 	'''next_statement : statement ENTER next_statement 
 					| empty''' 
+	
 
 def p_statement(p):
 	'''statement : assignment_statement 
 				| declaration_statement
 				| function_defination'''
+	p[0] = p[1]
 
 def p_assignment_statement(p):
 	'assignment_statement : ID WHITESPACE EQ WHITESPACE NUMBER'
@@ -69,35 +74,43 @@ def p_declaration_statement(p):
 	print(symbol_table)
 
 def p_expression(p):
-	'''expression : expression PLUS expression
-				| expression MINUS expression
-				| expression TIMES expression
-				| expression DIVIDE expression
-				| NUMBER 
-				| ID
+	'''expression : expression PLUS term
+				| expression MINUS term
+				| term
 				'''
 	if(len(p)==4):
-		if(p[2] == '+'):
-			node = ASTNode("expression")
-			exprNode = ASTExpressionNode(p[1],p[3],p[2],next(unique_sequence))
-			node.addOperation(exprNode)
-			print(node,file=astFile)
-			p[0] = node
-		elif(p[2] == '-'):
-			p[0] = p[1] - p[3]
-		elif(p[2] == '*'):
-			p[0] = p[1] * p[3]
-		else:
-			p[0] = p[1] / p[3]
+		node = ASTNode("expression")
+		exprNode = ASTExpressionNode(p[1],p[3],p[2],next(unique_sequence))
+		node.addOperation(exprNode)
+		print(node,file=astFile)
+		p[0] = node
 	else:
-		if(isinstance(p[1],str)):
-			p[0] = symbol_table[p[1]]["value"]
-		else:
-			p[0] = p[1]
-	
+		p[0] = p[1]
+
+def p_term(p):
+	'''term : term TIMES factor
+			| term DIVIDE factor
+			| factor
+	'''
+	if(len(p)==4):
+		node = ASTNode("expression")
+		exprNode = ASTExpressionNode(p[1],p[3],p[2],next(unique_sequence))
+		node.addOperation(exprNode)
+		print(node,file=astFile)
+		p[0] = node
+	else:
+		p[0] = p[1]
+
+def p_factor(p):
+	'''factor : ID 
+			| NUMBER
+	'''
+	p[0] = p[1]
 
 def p_function_defination(p):
 	'function_defination : FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE'
+	#node = ASTNode('function-defination')
+	#funNode = ASTFunctionDefination(p[3],p[12])
 
 def p_optional_parameters(p):
 	'''optional_parameters : has_parameter
