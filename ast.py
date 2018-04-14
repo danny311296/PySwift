@@ -1,28 +1,28 @@
 class ASTNode:
-	def __init__(self,Type):
+	def __init__(self,Type,idNo):
 		self.Type = Type
+		self.idNo = idNo
 		self.operation = None
 	def __str__(self):
-		return 'Node \n' + '\t\t---' + self.Type + '\n\t\t---' + str(self.operation)
+		output = ('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\n\t\t---' + str(self.operation)).split('\n')[0:3]
+		return output[0] + '\n' + output[1] + '\n' + output[2] + '\n'
 	def addOperation(self,operation):
 		self.operation = operation
 
 class ASTAssignmentNode:
-	def __init__(self,variable,assignValue,idNo):
+	def __init__(self,variable,assignValue):
 		self.variable = variable
 		self.assignValue = assignValue
-		self.idNo = idNo
 	def __str__(self):
-		return "Node ID " + str(self.idNo) + " " + self.variable + '     ' + str(self.assignValue)
+		return   self.variable + '     ' + str(self.assignValue)
 
 class ASTExpressionNode:
-	def __init__(self,l,r,o,idNo):
+	def __init__(self,l,r,o):
 		self.l = l
 		self.o = o
-		self.r = r
-		self.idNo = idNo
+		self.r = r	
 	def __str__(self):
-		return "Node ID " + str(self.idNo) + " operation " + self.o  + " on " + str(self.l) + " " + str(self.r) 
+		return " operation " + self.o  + " on " + str(self.l) + " " + str(self.r) 
 
 class ASTFunctionDefinationNode:
 	def __init__(self,name,statements):

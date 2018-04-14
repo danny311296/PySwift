@@ -51,7 +51,7 @@ def p_assignment_statement(p):
 
 def p_declaration_statement(p):
 	'''declaration_statement : VAR WHITESPACE ID COL WHITESPACE TYPE 
-							| VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE NUMBER
+							| VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
 							| VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression '''
 	if(symbol_table[p[3]]!=None):
 		print('Error: Variable already declared')	
@@ -63,12 +63,16 @@ def p_declaration_statement(p):
 		symbol_table[p[3]] = {}
 		symbol_table[p[3]]["type"] = p[6]
 		symbol_table[p[3]]["value"] = p[10]
+		node = ASTNode("assign",next(unique_sequence))
+		assignNode = ASTAssignmentNode(p[3],p[10])
+		node.addOperation(assignNode)
+		print(node,file=astFile)
 	else:
 		symbol_table[p[3]] = {}
 		symbol_table[p[3]]["value"] = p[7]
 		symbol_table[p[3]]["type"] = "Int"
-		node = ASTNode("assign")
-		assignNode = ASTAssignmentNode(p[3],p[7],next(unique_sequence))
+		node = ASTNode("assign",next(unique_sequence))
+		assignNode = ASTAssignmentNode(p[3],p[7])
 		node.addOperation(assignNode)
 		print(node,file=astFile)
 	print(symbol_table)
@@ -79,8 +83,8 @@ def p_expression(p):
 				| term
 				'''
 	if(len(p)==4):
-		node = ASTNode("expression")
-		exprNode = ASTExpressionNode(p[1],p[3],p[2],next(unique_sequence))
+		node = ASTNode("expression",next(unique_sequence))
+		exprNode = ASTExpressionNode(p[1],p[3],p[2])
 		node.addOperation(exprNode)
 		print(node,file=astFile)
 		p[0] = node
@@ -93,8 +97,8 @@ def p_term(p):
 			| factor
 	'''
 	if(len(p)==4):
-		node = ASTNode("expression")
-		exprNode = ASTExpressionNode(p[1],p[3],p[2],next(unique_sequence))
+		node = ASTNode("expression",next(unique_sequence))
+		exprNode = ASTExpressionNode(p[1],p[3],p[2])
 		node.addOperation(exprNode)
 		print(node,file=astFile)
 		p[0] = node
