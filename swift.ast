@@ -1,32 +1,72 @@
-Node 2507563100
+Node 1182979887
 		---expression
 		--- operation * on 3 4
 
-Node 2507563101
+Node 1182979888
 		---expression
-		--- operation + on 2 Node 2507563100
+		--- operation + on 2 Node 1182979887
 
-Node 2507563102
+Node 1182979889
 		---assign
-		---a     Node 2507563101
+		---a     Node 1182979888
 
-Node 2507563103
+Node 1182979890
 		---assign
 		---b     45
 
-Node 2507563104
+Node 1182979891
 		---expression
 		--- operation / on 3 4
 
-Node 2507563105
+Node 1182979892
 		---assign
-		---c     Node 2507563104
+		---c     Node 1182979891
 
-Node 2507563106
+Node 1182979893
 		---expression
 		--- operation + on 4 3
 
-Node 2507563107
+Node 1182979894
 		---assign
-		---d     Node 2507563106
+		---d     Node 1182979893
+
+Node 1182979895
+		---assign
+		---d     100
+
+Node 1182979896
+		---assign
+		---a1     2
+
+Node 1182979897
+		---assign
+		---a2     a1
+
+Node 1182979898
+		---expression
+		--- operation + on a1 a2
+
+Node 1182979899
+		---assign
+		---a3     Node 1182979898
+
+Node 1182979900
+		---function-defination
+		--- function a 
+
+Statements of Function a
+Node 1182979896
+		---assign
+		---a1     2
+Node 1182979897
+		---assign
+		---a2     a1
+Node 1182979899
+		---assign
+		---a3     Node 1182979898
+None
+End of Function a
+Node 1182979901
+		---assign
+		---l     2
 

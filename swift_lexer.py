@@ -1,9 +1,9 @@
 import ply.lex as lex
 
-tokens = ['NUMBER','VAR','ID','WHITESPACE','ENTER','EQ','TYPE','COL',
-'PLUS','MINUS','TIMES','DIVIDE','LPAREN','RPAREN','LBRACE','RBRACE','ARROW','COMMA']
+tokens = ['NUMBER','ID','WHITESPACE','ENTER','EQ','COL',
+'PLUS','MINUS','TIMES','DIVIDE','LPAREN','RPAREN','LBRACE','RBRACE','ARROW','COMMA','TRIPLEDOT']
 
-reserved = { 'var': 'VAR' ,'Int': 'TYPE', 'Float': 'TYPE' ,'Double':'TYPE','func':'FUNC'}
+reserved = { 'var': 'VAR' ,'Int': 'TYPE', 'Float': 'TYPE' ,'Double':'TYPE','func':'FUNC','in':'IN','for':'FOR'}
 
 tokens = tokens + list(reserved.values())
 
@@ -22,6 +22,7 @@ t_COL = r':'
 t_TYPE = r'Int|Float|Double'
 t_ARROW = r'->'
 t_COMMA = r','
+t_TRIPLEDOT = r'\.\.\.'
 
 def t_NUMBER(t):
 	r'\d+'

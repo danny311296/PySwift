@@ -28,3 +28,5 @@ class ASTFunctionDefinationNode:
 	def __init__(self,name,statements):
 		self.name = name
 		self.statements = statements
+	def __str__(self):
+		return " function " + self.name  + " \n " + str(self.statements)
