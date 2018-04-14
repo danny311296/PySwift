@@ -1,10 +1,11 @@
 import ply.yacc as yacc
+from ast import *
 
 from swift_lexer import tokens
 from collections import defaultdict
 
 symbol_table = defaultdict(lambda: None)
-
+astFile = open('swift.ast','w')
 def p_start(p):
 	'''start : statements 
 			| empty'''
@@ -51,6 +52,10 @@ def p_declaration_statement(p):
 		symbol_table[p[3]] = {}
 		symbol_table[p[3]]["value"] = p[7]
 		symbol_table[p[3]]["type"] = "Int"
+		node = ASTNode("assign")
+		assignNode = ASTAssignmentNode(p[3],p[7])
+		node.addOperation(assignNode)
+		print(node,file=astFile)
 	print(symbol_table)
 
 def p_expression(p):
@@ -63,7 +68,11 @@ def p_expression(p):
 				'''
 	if(len(p)==4):
 		if(p[2] == '+'):
-			p[0] = p[1] + p[3]
+			node = ASTNode("expression")
+			exprNode = ASTExpressionNode(p[1],p[3],p[2])
+			node.addOperation(exprNode)
+			print(node,file=astFile)
+			p[0] = node
 		elif(p[2] == '-'):
 			p[0] = p[1] - p[3]
 		elif(p[2] == '*'):
@@ -94,5 +103,5 @@ def p_optional_return_type(p):
 parser = yacc.yacc()
 
 
-f = open('test.swift','r')
+f = open('test2.swift','r')
 parser.parse(f.read())
