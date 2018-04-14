@@ -1,4 +1,5 @@
 import ply.yacc as yacc
+import random
 from ast import *
 
 from swift_lexer import tokens
@@ -6,6 +7,15 @@ from collections import defaultdict
 
 symbol_table = defaultdict(lambda: None)
 astFile = open('swift.ast','w')
+
+def uniqueid():
+    seed = random.getrandbits(32)
+    while True:
+       yield seed
+       seed += 1
+
+unique_sequence = uniqueid()
+
 def p_start(p):
 	'''start : statements 
 			| empty'''
@@ -53,7 +63,7 @@ def p_declaration_statement(p):
 		symbol_table[p[3]]["value"] = p[7]
 		symbol_table[p[3]]["type"] = "Int"
 		node = ASTNode("assign")
-		assignNode = ASTAssignmentNode(p[3],p[7])
+		assignNode = ASTAssignmentNode(p[3],p[7],next(unique_sequence))
 		node.addOperation(assignNode)
 		print(node,file=astFile)
 	print(symbol_table)
@@ -69,7 +79,7 @@ def p_expression(p):
 	if(len(p)==4):
 		if(p[2] == '+'):
 			node = ASTNode("expression")
-			exprNode = ASTExpressionNode(p[1],p[3],p[2])
+			exprNode = ASTExpressionNode(p[1],p[3],p[2],next(unique_sequence))
 			node.addOperation(exprNode)
 			print(node,file=astFile)
 			p[0] = node

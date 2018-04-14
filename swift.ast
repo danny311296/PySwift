@@ -1,3 +1,11 @@
-Node expression operation + on 2 3
-Node assign a     Node expression operation + on 2 3
-Node assign b     45
+Node 
+		---expression
+		---Node ID 2610233683 operation + on 2 3
+Node 
+		---assign
+		---Node ID 2610233684 a     Node 
+		---expression
+		---Node ID 2610233683 operation + on 2 3
+Node 
+		---assign
+		---Node ID 2610233685 b     45
