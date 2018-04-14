@@ -1,10 +1,9 @@
 import ply.lex as lex
 
 tokens = ['NUMBER','VAR','ID','WHITESPACE','ENTER','EQ','TYPE','COL',
-'PLUS','MINUS','TIMES','DIVIDE','LPAREN','RPAREN','LBRACE',
-'RBRACE','ARROW','COMMA','TRIPLEDOT']
+'PLUS','MINUS','TIMES','DIVIDE','LPAREN','RPAREN','LBRACE','RBRACE','ARROW','COMMA']
 
-reserved = { 'var': 'VAR' ,'Int': 'TYPE', 'Float': 'TYPE' ,'Double':'TYPE','func':'FUNC', 'for' : 'FOR', 'in' : 'IN' }
+reserved = { 'var': 'VAR' ,'Int': 'TYPE', 'Float': 'TYPE' ,'Double':'TYPE','func':'FUNC'}
 
 tokens = tokens + list(reserved.values())
 
@@ -23,7 +22,6 @@ t_COL = r':'
 t_TYPE = r'Int|Float|Double'
 t_ARROW = r'->'
 t_COMMA = r','
-t_TRIPLEDOT = r'\.\.\.'
 
 def t_NUMBER(t):
 	r'\d+'
@@ -41,24 +39,7 @@ def t_singleLine(t):
 def t_multiLine(t):
 	r'/\*[^(*/)]*\*/\n'
 
-lexer = lex.lex()
-
-f = open('out.txt','w')
-i = open('test.swift','r')
-
-import re
-d = i.read()
-
-op = re.sub(r'//.*\n', "", d)
-op1 = re.sub(r'/\*[^(*/)]*\*/\n','',op)
-
-#f.write(op1)
-#f.close()
-
-print(op1)
-print("\n\n Tokens")	
-lex.runmain()
+lexer = lex.lex(debug=1)
 
 if(__name__ == "__main__"):
-	print("\n\n Tokens")	
 	lex.runmain()
