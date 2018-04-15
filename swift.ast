@@ -1,72 +1,93 @@
-Node 1182979887
+Node 2877031794
 		---expression
 		--- operation * on 3 4
 
-Node 1182979888
+Node 2877031795
 		---expression
-		--- operation + on 2 Node 1182979887
+		--- operation + on 2 Node 2877031794
 
-Node 1182979889
+Node 2877031796
 		---assign
-		---a     Node 1182979888
+		---a     Node 2877031795
 
-Node 1182979890
+Node 2877031797
 		---assign
 		---b     45
 
-Node 1182979891
+Node 2877031798
 		---expression
 		--- operation / on 3 4
 
-Node 1182979892
+Node 2877031799
 		---assign
-		---c     Node 1182979891
+		---c     Node 2877031798
 
-Node 1182979893
+Node 2877031800
 		---expression
 		--- operation + on 4 3
 
-Node 1182979894
+Node 2877031801
 		---assign
-		---d     Node 1182979893
+		---d     Node 2877031800
 
-Node 1182979895
+Node 2877031802
 		---assign
 		---d     100
 
-Node 1182979896
+Node 2877031803
 		---assign
 		---a1     2
 
-Node 1182979897
+Node 2877031804
 		---assign
 		---a2     a1
 
-Node 1182979898
+Node 2877031805
 		---expression
 		--- operation + on a1 a2
 
-Node 1182979899
+Node 2877031806
 		---assign
-		---a3     Node 1182979898
+		---a3     Node 2877031805
 
-Node 1182979900
+Node 2877031807
 		---function-defination
 		--- function a 
 
 Statements of Function a
-Node 1182979896
+Node 2877031803
 		---assign
 		---a1     2
-Node 1182979897
+Node 2877031804
 		---assign
 		---a2     a1
-Node 1182979899
+Node 2877031806
 		---assign
-		---a3     Node 1182979898
+		---a3     Node 2877031805
 None
 End of Function a
-Node 1182979901
+Node 2877031808
 		---assign
 		---l     2
 
+Node 2877031809
+		---expression
+		--- operation + on l 1
+
+Node 2877031810
+		---assign
+		---x     Node 2877031809
+
+Node 4118908028
+		---for-loop
+		---i     1
+
+Statements inside For
+Node 2877031808
+		---assign
+		---l     2
+Node 2877031810
+		---assign
+		---x     Node 2877031809
+None
+End of For

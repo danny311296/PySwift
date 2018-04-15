@@ -20,9 +20,9 @@ class ASTExpressionNode:
 	def __init__(self,l,r,o):
 		self.l = l
 		self.o = o
-		self.r = r	
+		self.r = r
 	def __str__(self):
-		return " operation " + self.o  + " on " + str(self.l) + " " + str(self.r) 
+		return " operation " + self.o  + " on " + str(self.l) + " " + str(self.r)
 
 class ASTFunctionDefinationNode:
 	def __init__(self,name,statements):
@@ -30,3 +30,11 @@ class ASTFunctionDefinationNode:
 		self.statements = statements
 	def __str__(self):
 		return " function " + self.name  + " \n " + str(self.statements)
+
+class ASTIfSTatement:
+	def __init__(self, id, operation, val):
+		self.id = id
+		self.val = val
+		self.operation = operation
+	def __str__(self):
+		return " if " + self.id + " " + self.operation + " " + self.val

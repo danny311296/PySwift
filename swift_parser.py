@@ -17,7 +17,7 @@ def uniqueid():
 unique_sequence = uniqueid()
 
 def p_start(p):
-	'''start : statements 
+	'''start : statements
 			| empty'''
 
 def p_empty(p):
@@ -29,16 +29,16 @@ def p_statements(p):
 	p[0] = str(p[1]) + str(p[3])
 
 def p_next_statement(p):
-	'''next_statement : statement ENTER next_statement 
-					| empty''' 
+	'''next_statement : statement ENTER next_statement
+					| empty'''
 	if(len(p)==2):
 		p[0] = None
 	else:
 		p[0] = str(p[1]) + str(p[3])
-	
+
 
 def p_statement(p):
-	'''statement : assignment_statement 
+	'''statement : assignment_statement
 				| declaration_statement
 				| function_defination
 				| for_loop'''
@@ -54,14 +54,14 @@ def p_assignment_statement(p):
 		p[0] = node
 	else:
 		print("Error: Variable not declared")
-	
+
 
 def p_declaration_statement(p):
-	'''declaration_statement : VAR WHITESPACE ID COL WHITESPACE TYPE 
+	'''declaration_statement : VAR WHITESPACE ID COL WHITESPACE TYPE
 							| VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
 							| VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression '''
 	if(symbol_table[p[3]]!=None):
-		print('Error: Variable already declared')	
+		print('Error: Variable already declared')
 	elif(len(p)==7):
 		symbol_table[p[3]] = {}
 		symbol_table[p[3]]["type"] = p[6]
@@ -115,7 +115,7 @@ def p_term(p):
 		p[0] = p[1]
 
 def p_factor(p):
-	'''factor : ID 
+	'''factor : ID
 			| NUMBER
 	'''
 	p[0] = p[1]
@@ -143,7 +143,15 @@ def p_optional_return_type(p):
 	'optional_return_type : ARROW WHITESPACE TYPE'
 
 def p_for_loop(p):
-	'for_loop : FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE'
+    'for_loop : FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE'
+    node = ASTNode('for-loop', next(uniqueid()))
+    assignNode = ASTAssignmentNode(p[3],p[7])
+    node.addOperation(assignNode)
+    print(node,file=astFile)
+    print('Statements inside For',file=astFile)
+    print(p[13],file=astFile)
+    print('End of For' ,file=astFile)
+    p[0] = node
 
 parser = yacc.yacc()
 
