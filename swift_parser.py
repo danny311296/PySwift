@@ -19,6 +19,7 @@ unique_sequence = uniqueid()
 def p_start(p):
 	'''start : statements
 			| empty'''
+	print(p[1],file=astFile)
 
 def p_empty(p):
 	'empty :'
@@ -26,15 +27,15 @@ def p_empty(p):
 
 def p_statements(p):
 	'statements : statement ENTER next_statement'
-	p[0] = str(p[1]) + str(p[3])
+	p[0] = str(p[1]) + '\n' + str(p[3])
 
 def p_next_statement(p):
 	'''next_statement : statement ENTER next_statement
 					| empty'''
 	if(len(p)==2):
-		p[0] = None
+		p[0] = ''
 	else:
-		p[0] = str(p[1]) + str(p[3])
+		p[0] = str(p[1]) + '\n' + str(p[3])
 
 
 def p_statement(p):
@@ -50,7 +51,6 @@ def p_assignment_statement(p):
 		node = ASTNode("assign",next(unique_sequence))
 		assignNode = ASTAssignmentNode(p[1],p[5])
 		node.addOperation(assignNode)
-		print(node,file=astFile)
 		p[0] = node
 	else:
 		print("Error: Variable not declared")
@@ -73,7 +73,6 @@ def p_declaration_statement(p):
 		node = ASTNode("assign",next(unique_sequence))
 		assignNode = ASTAssignmentNode(p[3],p[10])
 		node.addOperation(assignNode)
-		print(node,file=astFile)
 		p[0] = node
 	else:
 		symbol_table[p[3]] = {}
@@ -82,7 +81,6 @@ def p_declaration_statement(p):
 		node = ASTNode("assign",next(unique_sequence))
 		assignNode = ASTAssignmentNode(p[3],p[7])
 		node.addOperation(assignNode)
-		print(node,file=astFile)
 		p[0] = node
 	#print(symbol_table)
 
@@ -92,11 +90,11 @@ def p_expression(p):
 				| term
 				'''
 	if(len(p)==4):
-		node = ASTNode("expression",next(unique_sequence))
-		exprNode = ASTExpressionNode(p[1],p[3],p[2])
+		idNo = next(unique_sequence)
+		node = ASTNode("expression",idNo)
+		exprNode = ASTExpressionNode(p[1],p[3],p[2],idNo)
 		node.addOperation(exprNode)
-		print(node,file=astFile)
-		p[0] = node
+		p[0] = str(node)
 	else:
 		p[0] = p[1]
 
@@ -106,11 +104,11 @@ def p_term(p):
 			| factor
 	'''
 	if(len(p)==4):
-		node = ASTNode("expression",next(unique_sequence))
-		exprNode = ASTExpressionNode(p[1],p[3],p[2])
+		idNo = next(unique_sequence)
+		node = ASTNode("expression",idNo)
+		exprNode = ASTExpressionNode(p[1],p[3],p[2],idNo)
 		node.addOperation(exprNode)
-		print(node,file=astFile)
-		p[0] = node
+		p[0] = str(node)
 	else:
 		p[0] = p[1]
 
@@ -125,10 +123,6 @@ def p_function_defination(p):
 	node = ASTNode('function-defination',next(unique_sequence))
 	funNode = ASTFunctionDefinationNode(p[3],p[12])
 	node.addOperation(funNode)
-	print(node,file=astFile)
-	print('Statements of Function ' + p[3],file=astFile)
-	print(p[12],file=astFile)
-	print('End of Function ' + p[3],file=astFile)
 	p[0] = node
 
 def p_optional_parameters(p):
@@ -145,12 +139,8 @@ def p_optional_return_type(p):
 def p_for_loop(p):
     'for_loop : FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE'
     node = ASTNode('for-loop', next(uniqueid()))
-    assignNode = ASTAssignmentNode(p[3],p[7])
-    node.addOperation(assignNode)
-    print(node,file=astFile)
-    print('Statements inside For',file=astFile)
-    print(p[13],file=astFile)
-    print('End of For' ,file=astFile)
+    forNode = ASTForNode(p[3],p[7],p[9],p[13])
+    node.addOperation(forNode)
     p[0] = node
 
 parser = yacc.yacc()

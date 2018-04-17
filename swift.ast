@@ -1,93 +1,42 @@
-Node 2877031794
-		---expression
-		--- operation * on 3 4
-
-Node 2877031795
-		---expression
-		--- operation + on 2 Node 2877031794
-
-Node 2877031796
+Node 654850102
 		---assign
-		---a     Node 2877031795
-
-Node 2877031797
+		---a     Node 654850101		---expression		---Node654850101 operation + on 2 Node 654850100		---expression		---Node654850100 operation * on 3 4
+Node 654850103
 		---assign
 		---b     45
-
-Node 2877031798
-		---expression
-		--- operation / on 3 4
-
-Node 2877031799
+Node 654850105
 		---assign
-		---c     Node 2877031798
-
-Node 2877031800
-		---expression
-		--- operation + on 4 3
-
-Node 2877031801
+		---c     Node 654850104		---expression		---Node654850104 operation / on 3 4
+Node 654850107
 		---assign
-		---d     Node 2877031800
-
-Node 2877031802
+		---d     Node 654850106		---expression		---Node654850106 operation + on 4 3
+Node 654850108
 		---assign
 		---d     100
-
-Node 2877031803
-		---assign
-		---a1     2
-
-Node 2877031804
-		---assign
-		---a2     a1
-
-Node 2877031805
-		---expression
-		--- operation + on a1 a2
-
-Node 2877031806
-		---assign
-		---a3     Node 2877031805
-
-Node 2877031807
+Node 654850113
 		---function-defination
-		--- function a 
-
-Statements of Function a
-Node 2877031803
+		--- function a
+Beginning of Function
+Node 654850109
 		---assign
 		---a1     2
-Node 2877031804
+Node 654850110
 		---assign
 		---a2     a1
-Node 2877031806
+Node 654850112
 		---assign
-		---a3     Node 2877031805
-None
-End of Function a
-Node 2877031808
-		---assign
-		---l     2
+		---a3     Node 654850111		---expression		---Node654850111 operation + on a1 a2
+End of Function
 
-Node 2877031809
-		---expression
-		--- operation + on l 1
-
-Node 2877031810
-		---assign
-		---x     Node 2877031809
-
-Node 4118908028
+Node 2775511964
 		---for-loop
-		---i     1
-
-Statements inside For
-Node 2877031808
+		---
+For statement i 1 2Node 654850114
 		---assign
 		---l     2
-Node 2877031810
+Node 654850116
 		---assign
-		---x     Node 2877031809
-None
-End of For
+		---x     Node 654850115		---expression		---Node654850115 operation + on l 1
+
+End of For statement
+
