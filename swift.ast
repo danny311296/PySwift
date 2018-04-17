@@ -1,36 +1,7 @@
-Node 2451087953
-		---assign		a     Node 2451087952
-		---expression		Node2451087952 operation + on Node2451087950 Node2451087951 ---expression Node2451087950 operation * on Node2451087949 5 ---expression Node2451087949 operation * on 2 3 ---expression Node2451087951 operation * on 6 7
-Node 2451087954
-		---assign		b     45
-Node 2451087956
-		---assign		c     Node 2451087955
-		---expression		Node2451087955 operation / on 3 4  
-Node 2451087958
-		---assign		d     Node 2451087957
-		---expression		Node2451087957 operation + on 4 3  
-Node 2451087959
-		---assign		d     100
-Node 2451087964
-		---function-defination
-		 function a
-Beginning of Function
-Node 2451087960
-		---assign		a1     2
-Node 2451087961
-		---assign		a2     a1
-Node 2451087963
-		---assign		a3     Node 2451087962
-		---expression		Node2451087962 operation + on a1 a2  
-End of Function
-Node 2797965647
-		---for-loop
-		For statement i 1 2
-Beginning of For Loop
-Node 2451087965
-		---assign		l     2
-Node 2451087967
-		---assign		x     Node 2451087966
-		---expression		Node2451087966 operation + on l 1  
-End of For statement
+Node 1171283075
+		---assign		a     Node 1171283074
+		---expression		Node1171283074 operation + on Node1171283072 Node1171283073 ---expression Node1171283072 operation * on 2 3 ---expression Node1171283073 operation * on 4 5
+Node 1171283079
+		---assign		b     Node 1171283078
+		---expression		Node1171283078 operation + on Node1171283076 Node1171283077 ---expression Node1171283076 operation + on 3 3 ---expression Node1171283077 operation * on 7 6
 

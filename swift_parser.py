@@ -146,5 +146,5 @@ def p_for_loop(p):
 parser = yacc.yacc()
 
 
-f = open('test3.swift','r')
+f = open('test4.swift','r')
 parser.parse(f.read())
