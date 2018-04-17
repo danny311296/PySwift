@@ -44,4 +44,4 @@ class ASTForNode:
 		self.fvalue = fvalue
 		self.statements = statements
 	def __str__(self):
-		return "\nFor statement " + self.variable + " " + str(self.ivalue) + " " + str(self.fvalue) + str(self.statements) + "\nEnd of For statement"
+		return "For statement " + self.variable + " " + str(self.ivalue) + " " + str(self.fvalue) + "\nBeginning of For Loop\n" + str(self.statements) + "\nEnd of For statement"
