@@ -5,11 +5,11 @@ class ASTNode:
 		self.operation = None
 	def __str__(self):
 		if self.Type == 'function-defination' or self.Type == 'for-loop':
-			output = ('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\n\t\t---' + str(self.operation))
+			output = ('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\n\t\t' + str(self.operation))
 		elif self.Type == 'expression':
-			output = ''.join('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\t\t---' + str(self.operation))
+			output = ''.join('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\t\t' + str(self.operation))
 		else:
-			output = ('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\n\t\t---' + str(self.operation))
+			output = ('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\t\t' + str(self.operation))
 		return output
 	def addOperation(self,operation):
 		self.operation = operation

@@ -1,46 +1,36 @@
-Node 3115976290
-		---assign
-		---a     Node 3115976289
-		---expression		---Node3115976289 operation + on Node3115976287 Node3115976288 ---expression ---Node3115976287 operation * on Node3115976286 5 ---expression ---Node3115976286 operation * on 2 3 ---expression ---Node3115976288 operation * on 6 7
-Node 3115976291
-		---assign
-		---b     45
-Node 3115976293
-		---assign
-		---c     Node 3115976292
-		---expression		---Node3115976292 operation / on 3 4  
-Node 3115976295
-		---assign
-		---d     Node 3115976294
-		---expression		---Node3115976294 operation + on 4 3  
-Node 3115976296
-		---assign
-		---d     100
-Node 3115976301
+Node 2451087953
+		---assign		a     Node 2451087952
+		---expression		Node2451087952 operation + on Node2451087950 Node2451087951 ---expression Node2451087950 operation * on Node2451087949 5 ---expression Node2451087949 operation * on 2 3 ---expression Node2451087951 operation * on 6 7
+Node 2451087954
+		---assign		b     45
+Node 2451087956
+		---assign		c     Node 2451087955
+		---expression		Node2451087955 operation / on 3 4  
+Node 2451087958
+		---assign		d     Node 2451087957
+		---expression		Node2451087957 operation + on 4 3  
+Node 2451087959
+		---assign		d     100
+Node 2451087964
 		---function-defination
-		--- function a
+		 function a
 Beginning of Function
-Node 3115976297
-		---assign
-		---a1     2
-Node 3115976298
-		---assign
-		---a2     a1
-Node 3115976300
-		---assign
-		---a3     Node 3115976299
-		---expression		---Node3115976299 operation + on a1 a2  
+Node 2451087960
+		---assign		a1     2
+Node 2451087961
+		---assign		a2     a1
+Node 2451087963
+		---assign		a3     Node 2451087962
+		---expression		Node2451087962 operation + on a1 a2  
 End of Function
-Node 1057765493
+Node 2797965647
 		---for-loop
-		---For statement i 1 2
+		For statement i 1 2
 Beginning of For Loop
-Node 3115976302
-		---assign
-		---l     2
-Node 3115976304
-		---assign
-		---x     Node 3115976303
-		---expression		---Node3115976303 operation + on l 1  
+Node 2451087965
+		---assign		l     2
+Node 2451087967
+		---assign		x     Node 2451087966
+		---expression		Node2451087966 operation + on l 1  
 End of For statement
 
