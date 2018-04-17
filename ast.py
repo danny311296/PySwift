@@ -7,7 +7,7 @@ class ASTNode:
 		if self.Type == 'function-defination' or self.Type == 'for-loop':
 			output = ('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\n\t\t---' + str(self.operation))
 		elif self.Type == 'expression':
-			output = ''.join(('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\n\t\t---' + str(self.operation)).split('\n')[0:3])
+			output = ''.join('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\t\t---' + str(self.operation))
 		else:
 			output = ('Node ' + str(self.idNo) + '\n' + '\t\t---' + self.Type + '\n\t\t---' + str(self.operation))
 		return output
@@ -28,14 +28,14 @@ class ASTExpressionNode:
 		self.r = r
 		self.idNo = idNo
 	def __str__(self):
-		return "Node" + str(self.idNo) + " operation " + self.o  + " on " + str(self.l) + " " + str(self.r)
+		return "Node" + str(self.idNo) + " operation " + self.o  + " on " + "".join(str(self.l).split()[0:2]) + " " + "".join(str(self.r).split()[0:2]) + " " + str(" ".join(str(self.l).split()[2:])) + " " + str(" ".join(str(self.r).split()[2:]))
 
 class ASTFunctionDefinationNode:
 	def __init__(self,name,statements):
 		self.name = name
 		self.statements = statements
 	def __str__(self):
-		return " function " + self.name  + "\n" + "Beginning of Function\n" +  str(self.statements) + "End of Function\n"
+		return " function " + self.name  + "\n" + "Beginning of Function\n" +  str(self.statements) + "End of Function"
 
 class ASTForNode:
 	def __init__(self, variable, ivalue, fvalue, statements):
@@ -44,4 +44,4 @@ class ASTForNode:
 		self.fvalue = fvalue
 		self.statements = statements
 	def __str__(self):
-		return "For statement " + self.variable + " " + str(self.ivalue) + " " + str(self.fvalue) + "\nBeginning of For Loop\n" + str(self.statements) + "\nEnd of For statement"
+		return "For statement " + self.variable + " " + str(self.ivalue) + " " + str(self.fvalue) + "\nBeginning of For Loop\n" + str(self.statements) + "End of For statement"
