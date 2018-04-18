@@ -1,7 +1,24 @@
-Node 1171283075
-		---assign		a     Node 1171283074
-		---expression		Node1171283074 operation + on Node1171283072 Node1171283073 ---expression Node1171283072 operation * on 2 3 ---expression Node1171283073 operation * on 4 5
-Node 1171283079
-		---assign		b     Node 1171283078
-		---expression		Node1171283078 operation + on Node1171283076 Node1171283077 ---expression Node1171283076 operation + on 3 3 ---expression Node1171283077 operation * on 7 6
+Node 1501413576
+		---assign		a     Node 1501413575
+		---expression		Node1501413575 operation + on Node1501413573 Node1501413574 ---expression Node1501413573 operation * on Node1501413572 5 ---expression Node1501413572 operation * on 2 3 ---expression Node1501413574 operation * on 6 7
+Node 1501413577
+		---assign		b     45
+Node 1501413579
+		---assign		c     Node 1501413578
+		---expression		Node1501413578 operation / on 3 4  
+Node 1501413581
+		---assign		d     Node 1501413580
+		---expression		Node1501413580 operation + on 4 3  
+Node 1501413582
+		---assign		d     100
+Node 711431032
+		---for-loop
+		For statement i 1 2
+Beginning of For Loop
+Node 1501413583
+		---assign		l     2
+Node 1501413585
+		---assign		x     Node 1501413584
+		---expression		Node1501413584 operation + on l 1  
+End of For statement
 
