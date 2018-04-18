@@ -98,89 +98,89 @@ state 0
     (29) for_loop -> . FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
 
     $end            reduce using rule 3 (empty -> .)
-    ID              shift and go to state 5
-    VAR             shift and go to state 7
-    FUNC            shift and go to state 2
-    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    VAR             shift and go to state 4
+    FUNC            shift and go to state 5
+    FOR             shift and go to state 6
 
-    assignment_statement           shift and go to state 1
-    for_loop                       shift and go to state 8
-    function_defination            shift and go to state 3
-    start                          shift and go to state 4
+    for_loop                       shift and go to state 9
+    start                          shift and go to state 10
     empty                          shift and go to state 11
-    statements                     shift and go to state 10
-    declaration_statement          shift and go to state 6
-    statement                      shift and go to state 12
+    statement                      shift and go to state 2
+    declaration_statement          shift and go to state 3
+    assignment_statement           shift and go to state 12
+    statements                     shift and go to state 7
+    function_defination            shift and go to state 1
 
 state 1
-
-    (7) statement -> assignment_statement .
-
-    ENTER           reduce using rule 7 (statement -> assignment_statement .)
-
-
-state 2
-
-    (23) function_defination -> FUNC . WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
-
-    WHITESPACE      shift and go to state 13
-
-
-state 3
 
     (9) statement -> function_defination .
 
     ENTER           reduce using rule 9 (statement -> function_defination .)
 
 
-state 4
+state 2
 
-    (0) S' -> start .
+    (4) statements -> statement . ENTER next_statement
 
-
-
-state 5
-
-    (11) assignment_statement -> ID . WHITESPACE EQ WHITESPACE expression
-
-    WHITESPACE      shift and go to state 14
+    ENTER           shift and go to state 13
 
 
-state 6
+state 3
 
     (8) statement -> declaration_statement .
 
     ENTER           reduce using rule 8 (statement -> declaration_statement .)
 
 
-state 7
+state 4
 
     (12) declaration_statement -> VAR . WHITESPACE ID COL WHITESPACE TYPE
     (13) declaration_statement -> VAR . WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
     (14) declaration_statement -> VAR . WHITESPACE ID WHITESPACE EQ WHITESPACE expression
 
+    WHITESPACE      shift and go to state 14
+
+
+state 5
+
+    (23) function_defination -> FUNC . WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
+
     WHITESPACE      shift and go to state 15
 
 
-state 8
-
-    (10) statement -> for_loop .
-
-    ENTER           reduce using rule 10 (statement -> for_loop .)
-
-
-state 9
+state 6
 
     (29) for_loop -> FOR . WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
 
     WHITESPACE      shift and go to state 16
 
 
-state 10
+state 7
 
     (1) start -> statements .
 
     $end            reduce using rule 1 (start -> statements .)
+
+
+state 8
+
+    (11) assignment_statement -> ID . WHITESPACE EQ WHITESPACE expression
+
+    WHITESPACE      shift and go to state 17
+
+
+state 9
+
+    (10) statement -> for_loop .
+
+    ENTER           reduce using rule 10 (statement -> for_loop .)
+
+
+state 10
+
+    (0) S' -> start .
+
 
 
 state 11
@@ -192,42 +192,12 @@ state 11
 
 state 12
 
-    (4) statements -> statement . ENTER next_statement
+    (7) statement -> assignment_statement .
 
-    ENTER           shift and go to state 17
+    ENTER           reduce using rule 7 (statement -> assignment_statement .)
 
 
 state 13
-
-    (23) function_defination -> FUNC WHITESPACE . ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
-
-    ID              shift and go to state 18
-
-
-state 14
-
-    (11) assignment_statement -> ID WHITESPACE . EQ WHITESPACE expression
-
-    EQ              shift and go to state 19
-
-
-state 15
-
-    (12) declaration_statement -> VAR WHITESPACE . ID COL WHITESPACE TYPE
-    (13) declaration_statement -> VAR WHITESPACE . ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
-    (14) declaration_statement -> VAR WHITESPACE . ID WHITESPACE EQ WHITESPACE expression
-
-    ID              shift and go to state 20
-
-
-state 16
-
-    (29) for_loop -> FOR WHITESPACE . ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
-
-    ID              shift and go to state 21
-
-
-state 17
 
     (4) statements -> statement ENTER . next_statement
     (5) next_statement -> . statement ENTER next_statement
@@ -246,51 +216,57 @@ state 17
 
     $end            reduce using rule 3 (empty -> .)
     RBRACE          reduce using rule 3 (empty -> .)
-    ID              shift and go to state 5
-    VAR             shift and go to state 7
-    FUNC            shift and go to state 2
-    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    VAR             shift and go to state 4
+    FUNC            shift and go to state 5
+    FOR             shift and go to state 6
 
-    next_statement                 shift and go to state 22
-    declaration_statement          shift and go to state 6
-    assignment_statement           shift and go to state 1
-    for_loop                       shift and go to state 8
-    empty                          shift and go to state 23
-    statement                      shift and go to state 24
-    function_defination            shift and go to state 3
+    for_loop                       shift and go to state 9
+    next_statement                 shift and go to state 19
+    empty                          shift and go to state 20
+    function_defination            shift and go to state 1
+    statement                      shift and go to state 18
+    declaration_statement          shift and go to state 3
+    assignment_statement           shift and go to state 12
+
+state 14
+
+    (12) declaration_statement -> VAR WHITESPACE . ID COL WHITESPACE TYPE
+    (13) declaration_statement -> VAR WHITESPACE . ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
+    (14) declaration_statement -> VAR WHITESPACE . ID WHITESPACE EQ WHITESPACE expression
+
+    ID              shift and go to state 21
+
+
+state 15
+
+    (23) function_defination -> FUNC WHITESPACE . ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
+
+    ID              shift and go to state 22
+
+
+state 16
+
+    (29) for_loop -> FOR WHITESPACE . ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
+
+    ID              shift and go to state 23
+
+
+state 17
+
+    (11) assignment_statement -> ID WHITESPACE . EQ WHITESPACE expression
+
+    EQ              shift and go to state 24
+
 
 state 18
 
-    (23) function_defination -> FUNC WHITESPACE ID . LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
+    (5) next_statement -> statement . ENTER next_statement
 
-    LPAREN          shift and go to state 25
+    ENTER           shift and go to state 25
 
 
 state 19
-
-    (11) assignment_statement -> ID WHITESPACE EQ . WHITESPACE expression
-
-    WHITESPACE      shift and go to state 26
-
-
-state 20
-
-    (12) declaration_statement -> VAR WHITESPACE ID . COL WHITESPACE TYPE
-    (13) declaration_statement -> VAR WHITESPACE ID . COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
-    (14) declaration_statement -> VAR WHITESPACE ID . WHITESPACE EQ WHITESPACE expression
-
-    COL             shift and go to state 28
-    WHITESPACE      shift and go to state 27
-
-
-state 21
-
-    (29) for_loop -> FOR WHITESPACE ID . WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
-
-    WHITESPACE      shift and go to state 29
-
-
-state 22
 
     (4) statements -> statement ENTER next_statement .
 
@@ -298,7 +274,7 @@ state 22
     RBRACE          reduce using rule 4 (statements -> statement ENTER next_statement .)
 
 
-state 23
+state 20
 
     (6) next_statement -> empty .
 
@@ -306,71 +282,38 @@ state 23
     RBRACE          reduce using rule 6 (next_statement -> empty .)
 
 
+state 21
+
+    (12) declaration_statement -> VAR WHITESPACE ID . COL WHITESPACE TYPE
+    (13) declaration_statement -> VAR WHITESPACE ID . COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
+    (14) declaration_statement -> VAR WHITESPACE ID . WHITESPACE EQ WHITESPACE expression
+
+    COL             shift and go to state 26
+    WHITESPACE      shift and go to state 27
+
+
+state 22
+
+    (23) function_defination -> FUNC WHITESPACE ID . LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
+
+    LPAREN          shift and go to state 28
+
+
+state 23
+
+    (29) for_loop -> FOR WHITESPACE ID . WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
+
+    WHITESPACE      shift and go to state 29
+
+
 state 24
 
-    (5) next_statement -> statement . ENTER next_statement
+    (11) assignment_statement -> ID WHITESPACE EQ . WHITESPACE expression
 
-    ENTER           shift and go to state 30
+    WHITESPACE      shift and go to state 30
 
 
 state 25
-
-    (23) function_defination -> FUNC WHITESPACE ID LPAREN . optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
-    (24) optional_parameters -> . has_parameter
-    (25) optional_parameters -> . empty
-    (26) has_parameter -> . has_parameter COMMA has_parameter
-    (27) has_parameter -> . ID COL WHITESPACE TYPE
-    (3) empty -> .
-
-    ID              shift and go to state 31
-    RPAREN          reduce using rule 3 (empty -> .)
-
-    empty                          shift and go to state 33
-    optional_parameters            shift and go to state 34
-    has_parameter                  shift and go to state 32
-
-state 26
-
-    (11) assignment_statement -> ID WHITESPACE EQ WHITESPACE . expression
-    (15) expression -> . expression PLUS term
-    (16) expression -> . expression MINUS term
-    (17) expression -> . term
-    (18) term -> . term TIMES factor
-    (19) term -> . term DIVIDE factor
-    (20) term -> . factor
-    (21) factor -> . ID
-    (22) factor -> . NUMBER
-
-    ID              shift and go to state 39
-    NUMBER          shift and go to state 37
-
-    expression                     shift and go to state 35
-    term                           shift and go to state 38
-    factor                         shift and go to state 36
-
-state 27
-
-    (14) declaration_statement -> VAR WHITESPACE ID WHITESPACE . EQ WHITESPACE expression
-
-    EQ              shift and go to state 40
-
-
-state 28
-
-    (12) declaration_statement -> VAR WHITESPACE ID COL . WHITESPACE TYPE
-    (13) declaration_statement -> VAR WHITESPACE ID COL . WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
-
-    WHITESPACE      shift and go to state 41
-
-
-state 29
-
-    (29) for_loop -> FOR WHITESPACE ID WHITESPACE . IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
-
-    IN              shift and go to state 42
-
-
-state 30
 
     (5) next_statement -> statement ENTER . next_statement
     (5) next_statement -> . statement ENTER next_statement
@@ -389,40 +332,97 @@ state 30
 
     $end            reduce using rule 3 (empty -> .)
     RBRACE          reduce using rule 3 (empty -> .)
-    ID              shift and go to state 5
-    VAR             shift and go to state 7
-    FUNC            shift and go to state 2
-    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    VAR             shift and go to state 4
+    FUNC            shift and go to state 5
+    FOR             shift and go to state 6
 
-    next_statement                 shift and go to state 43
-    declaration_statement          shift and go to state 6
-    assignment_statement           shift and go to state 1
-    for_loop                       shift and go to state 8
-    empty                          shift and go to state 23
-    statement                      shift and go to state 24
-    function_defination            shift and go to state 3
+    for_loop                       shift and go to state 9
+    next_statement                 shift and go to state 31
+    empty                          shift and go to state 20
+    function_defination            shift and go to state 1
+    statement                      shift and go to state 18
+    declaration_statement          shift and go to state 3
+    assignment_statement           shift and go to state 12
+
+state 26
+
+    (12) declaration_statement -> VAR WHITESPACE ID COL . WHITESPACE TYPE
+    (13) declaration_statement -> VAR WHITESPACE ID COL . WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression
+
+    WHITESPACE      shift and go to state 32
+
+
+state 27
+
+    (14) declaration_statement -> VAR WHITESPACE ID WHITESPACE . EQ WHITESPACE expression
+
+    EQ              shift and go to state 33
+
+
+state 28
+
+    (23) function_defination -> FUNC WHITESPACE ID LPAREN . optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
+    (24) optional_parameters -> . has_parameter
+    (25) optional_parameters -> . empty
+    (26) has_parameter -> . has_parameter COMMA has_parameter
+    (27) has_parameter -> . ID COL WHITESPACE TYPE
+    (3) empty -> .
+
+    ID              shift and go to state 37
+    RPAREN          reduce using rule 3 (empty -> .)
+
+    has_parameter                  shift and go to state 36
+    optional_parameters            shift and go to state 34
+    empty                          shift and go to state 35
+
+state 29
+
+    (29) for_loop -> FOR WHITESPACE ID WHITESPACE . IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
+
+    IN              shift and go to state 38
+
+
+state 30
+
+    (11) assignment_statement -> ID WHITESPACE EQ WHITESPACE . expression
+    (15) expression -> . expression PLUS term
+    (16) expression -> . expression MINUS term
+    (17) expression -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . factor
+    (21) factor -> . ID
+    (22) factor -> . NUMBER
+
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 40
+
+    expression                     shift and go to state 39
+    term                           shift and go to state 41
+    factor                         shift and go to state 42
 
 state 31
 
-    (27) has_parameter -> ID . COL WHITESPACE TYPE
+    (5) next_statement -> statement ENTER next_statement .
 
-    COL             shift and go to state 44
+    $end            reduce using rule 5 (next_statement -> statement ENTER next_statement .)
+    RBRACE          reduce using rule 5 (next_statement -> statement ENTER next_statement .)
 
 
 state 32
 
-    (24) optional_parameters -> has_parameter .
-    (26) has_parameter -> has_parameter . COMMA has_parameter
+    (12) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE . TYPE
+    (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE . TYPE WHITESPACE EQ WHITESPACE expression
 
-    RPAREN          reduce using rule 24 (optional_parameters -> has_parameter .)
-    COMMA           shift and go to state 45
+    TYPE            shift and go to state 44
 
 
 state 33
 
-    (25) optional_parameters -> empty .
+    (14) declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ . WHITESPACE expression
 
-    RPAREN          reduce using rule 25 (optional_parameters -> empty .)
+    WHITESPACE      shift and go to state 45
 
 
 state 34
@@ -434,27 +434,46 @@ state 34
 
 state 35
 
+    (25) optional_parameters -> empty .
+
+    RPAREN          reduce using rule 25 (optional_parameters -> empty .)
+
+
+state 36
+
+    (24) optional_parameters -> has_parameter .
+    (26) has_parameter -> has_parameter . COMMA has_parameter
+
+    RPAREN          reduce using rule 24 (optional_parameters -> has_parameter .)
+    COMMA           shift and go to state 47
+
+
+state 37
+
+    (27) has_parameter -> ID . COL WHITESPACE TYPE
+
+    COL             shift and go to state 48
+
+
+state 38
+
+    (29) for_loop -> FOR WHITESPACE ID WHITESPACE IN . WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
+
+    WHITESPACE      shift and go to state 49
+
+
+state 39
+
     (11) assignment_statement -> ID WHITESPACE EQ WHITESPACE expression .
     (15) expression -> expression . PLUS term
     (16) expression -> expression . MINUS term
 
     ENTER           reduce using rule 11 (assignment_statement -> ID WHITESPACE EQ WHITESPACE expression .)
-    PLUS            shift and go to state 47
-    MINUS           shift and go to state 48
+    PLUS            shift and go to state 50
+    MINUS           shift and go to state 51
 
 
-state 36
-
-    (20) term -> factor .
-
-    TIMES           reduce using rule 20 (term -> factor .)
-    DIVIDE          reduce using rule 20 (term -> factor .)
-    PLUS            reduce using rule 20 (term -> factor .)
-    MINUS           reduce using rule 20 (term -> factor .)
-    ENTER           reduce using rule 20 (term -> factor .)
-
-
-state 37
+state 40
 
     (22) factor -> NUMBER .
 
@@ -465,7 +484,7 @@ state 37
     ENTER           reduce using rule 22 (factor -> NUMBER .)
 
 
-state 38
+state 41
 
     (17) expression -> term .
     (18) term -> term . TIMES factor
@@ -474,11 +493,22 @@ state 38
     PLUS            reduce using rule 17 (expression -> term .)
     MINUS           reduce using rule 17 (expression -> term .)
     ENTER           reduce using rule 17 (expression -> term .)
-    TIMES           shift and go to state 50
-    DIVIDE          shift and go to state 49
+    TIMES           shift and go to state 53
+    DIVIDE          shift and go to state 52
 
 
-state 39
+state 42
+
+    (20) term -> factor .
+
+    TIMES           reduce using rule 20 (term -> factor .)
+    DIVIDE          reduce using rule 20 (term -> factor .)
+    PLUS            reduce using rule 20 (term -> factor .)
+    MINUS           reduce using rule 20 (term -> factor .)
+    ENTER           reduce using rule 20 (term -> factor .)
+
+
+state 43
 
     (21) factor -> ID .
 
@@ -489,113 +519,16 @@ state 39
     ENTER           reduce using rule 21 (factor -> ID .)
 
 
-state 40
-
-    (14) declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ . WHITESPACE expression
-
-    WHITESPACE      shift and go to state 51
-
-
-state 41
-
-    (12) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE . TYPE
-    (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE . TYPE WHITESPACE EQ WHITESPACE expression
-
-    TYPE            shift and go to state 52
-
-
-state 42
-
-    (29) for_loop -> FOR WHITESPACE ID WHITESPACE IN . WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
-
-    WHITESPACE      shift and go to state 53
-
-
-state 43
-
-    (5) next_statement -> statement ENTER next_statement .
-
-    $end            reduce using rule 5 (next_statement -> statement ENTER next_statement .)
-    RBRACE          reduce using rule 5 (next_statement -> statement ENTER next_statement .)
-
-
 state 44
 
-    (27) has_parameter -> ID COL . WHITESPACE TYPE
+    (12) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE .
+    (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE . WHITESPACE EQ WHITESPACE expression
 
+    ENTER           reduce using rule 12 (declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE .)
     WHITESPACE      shift and go to state 54
 
 
 state 45
-
-    (26) has_parameter -> has_parameter COMMA . has_parameter
-    (26) has_parameter -> . has_parameter COMMA has_parameter
-    (27) has_parameter -> . ID COL WHITESPACE TYPE
-
-    ID              shift and go to state 31
-
-    has_parameter                  shift and go to state 55
-
-state 46
-
-    (23) function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN . WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
-
-    WHITESPACE      shift and go to state 56
-
-
-state 47
-
-    (15) expression -> expression PLUS . term
-    (18) term -> . term TIMES factor
-    (19) term -> . term DIVIDE factor
-    (20) term -> . factor
-    (21) factor -> . ID
-    (22) factor -> . NUMBER
-
-    ID              shift and go to state 39
-    NUMBER          shift and go to state 37
-
-    term                           shift and go to state 57
-    factor                         shift and go to state 36
-
-state 48
-
-    (16) expression -> expression MINUS . term
-    (18) term -> . term TIMES factor
-    (19) term -> . term DIVIDE factor
-    (20) term -> . factor
-    (21) factor -> . ID
-    (22) factor -> . NUMBER
-
-    ID              shift and go to state 39
-    NUMBER          shift and go to state 37
-
-    term                           shift and go to state 58
-    factor                         shift and go to state 36
-
-state 49
-
-    (19) term -> term DIVIDE . factor
-    (21) factor -> . ID
-    (22) factor -> . NUMBER
-
-    ID              shift and go to state 39
-    NUMBER          shift and go to state 37
-
-    factor                         shift and go to state 59
-
-state 50
-
-    (18) term -> term TIMES . factor
-    (21) factor -> . ID
-    (22) factor -> . NUMBER
-
-    ID              shift and go to state 39
-    NUMBER          shift and go to state 37
-
-    factor                         shift and go to state 60
-
-state 51
 
     (14) declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ WHITESPACE . expression
     (15) expression -> . expression PLUS term
@@ -607,46 +540,112 @@ state 51
     (21) factor -> . ID
     (22) factor -> . NUMBER
 
-    ID              shift and go to state 39
-    NUMBER          shift and go to state 37
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 40
 
-    expression                     shift and go to state 61
-    term                           shift and go to state 38
-    factor                         shift and go to state 36
+    expression                     shift and go to state 55
+    term                           shift and go to state 41
+    factor                         shift and go to state 42
 
-state 52
+state 46
 
-    (12) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE .
-    (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE . WHITESPACE EQ WHITESPACE expression
+    (23) function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN . WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
 
-    ENTER           reduce using rule 12 (declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE .)
-    WHITESPACE      shift and go to state 62
+    WHITESPACE      shift and go to state 56
 
 
-state 53
+state 47
+
+    (26) has_parameter -> has_parameter COMMA . has_parameter
+    (26) has_parameter -> . has_parameter COMMA has_parameter
+    (27) has_parameter -> . ID COL WHITESPACE TYPE
+
+    ID              shift and go to state 37
+
+    has_parameter                  shift and go to state 57
+
+state 48
+
+    (27) has_parameter -> ID COL . WHITESPACE TYPE
+
+    WHITESPACE      shift and go to state 58
+
+
+state 49
 
     (29) for_loop -> FOR WHITESPACE ID WHITESPACE IN WHITESPACE . NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
 
-    NUMBER          shift and go to state 63
+    NUMBER          shift and go to state 59
 
+
+state 50
+
+    (15) expression -> expression PLUS . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . factor
+    (21) factor -> . ID
+    (22) factor -> . NUMBER
+
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 40
+
+    term                           shift and go to state 60
+    factor                         shift and go to state 42
+
+state 51
+
+    (16) expression -> expression MINUS . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . factor
+    (21) factor -> . ID
+    (22) factor -> . NUMBER
+
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 40
+
+    term                           shift and go to state 61
+    factor                         shift and go to state 42
+
+state 52
+
+    (19) term -> term DIVIDE . factor
+    (21) factor -> . ID
+    (22) factor -> . NUMBER
+
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 40
+
+    factor                         shift and go to state 62
+
+state 53
+
+    (18) term -> term TIMES . factor
+    (21) factor -> . ID
+    (22) factor -> . NUMBER
+
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 40
+
+    factor                         shift and go to state 63
 
 state 54
 
-    (27) has_parameter -> ID COL WHITESPACE . TYPE
+    (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE . EQ WHITESPACE expression
 
-    TYPE            shift and go to state 64
+    EQ              shift and go to state 64
 
 
 state 55
 
-    (26) has_parameter -> has_parameter COMMA has_parameter .
-    (26) has_parameter -> has_parameter . COMMA has_parameter
+    (14) declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression .
+    (15) expression -> expression . PLUS term
+    (16) expression -> expression . MINUS term
 
-  ! shift/reduce conflict for COMMA resolved as shift
-    RPAREN          reduce using rule 26 (has_parameter -> has_parameter COMMA has_parameter .)
-    COMMA           shift and go to state 45
-
-  ! COMMA           [ reduce using rule 26 (has_parameter -> has_parameter COMMA has_parameter .) ]
+    ENTER           reduce using rule 14 (declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression .)
+    PLUS            shift and go to state 50
+    MINUS           shift and go to state 51
 
 
 state 56
@@ -660,6 +659,32 @@ state 56
 
 state 57
 
+    (26) has_parameter -> has_parameter COMMA has_parameter .
+    (26) has_parameter -> has_parameter . COMMA has_parameter
+
+  ! shift/reduce conflict for COMMA resolved as shift
+    RPAREN          reduce using rule 26 (has_parameter -> has_parameter COMMA has_parameter .)
+    COMMA           shift and go to state 47
+
+  ! COMMA           [ reduce using rule 26 (has_parameter -> has_parameter COMMA has_parameter .) ]
+
+
+state 58
+
+    (27) has_parameter -> ID COL WHITESPACE . TYPE
+
+    TYPE            shift and go to state 67
+
+
+state 59
+
+    (29) for_loop -> FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER . TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
+
+    TRIPLEDOT       shift and go to state 68
+
+
+state 60
+
     (15) expression -> expression PLUS term .
     (18) term -> term . TIMES factor
     (19) term -> term . DIVIDE factor
@@ -667,11 +692,11 @@ state 57
     PLUS            reduce using rule 15 (expression -> expression PLUS term .)
     MINUS           reduce using rule 15 (expression -> expression PLUS term .)
     ENTER           reduce using rule 15 (expression -> expression PLUS term .)
-    TIMES           shift and go to state 50
-    DIVIDE          shift and go to state 49
+    TIMES           shift and go to state 53
+    DIVIDE          shift and go to state 52
 
 
-state 58
+state 61
 
     (16) expression -> expression MINUS term .
     (18) term -> term . TIMES factor
@@ -680,11 +705,11 @@ state 58
     PLUS            reduce using rule 16 (expression -> expression MINUS term .)
     MINUS           reduce using rule 16 (expression -> expression MINUS term .)
     ENTER           reduce using rule 16 (expression -> expression MINUS term .)
-    TIMES           shift and go to state 50
-    DIVIDE          shift and go to state 49
+    TIMES           shift and go to state 53
+    DIVIDE          shift and go to state 52
 
 
-state 59
+state 62
 
     (19) term -> term DIVIDE factor .
 
@@ -695,7 +720,7 @@ state 59
     ENTER           reduce using rule 19 (term -> term DIVIDE factor .)
 
 
-state 60
+state 63
 
     (18) term -> term TIMES factor .
 
@@ -706,58 +731,33 @@ state 60
     ENTER           reduce using rule 18 (term -> term TIMES factor .)
 
 
-state 61
-
-    (14) declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression .
-    (15) expression -> expression . PLUS term
-    (16) expression -> expression . MINUS term
-
-    ENTER           reduce using rule 14 (declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression .)
-    PLUS            shift and go to state 47
-    MINUS           shift and go to state 48
-
-
-state 62
-
-    (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE . EQ WHITESPACE expression
-
-    EQ              shift and go to state 67
-
-
-state 63
-
-    (29) for_loop -> FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER . TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
-
-    TRIPLEDOT       shift and go to state 68
-
-
 state 64
 
-    (27) has_parameter -> ID COL WHITESPACE TYPE .
+    (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ . WHITESPACE expression
 
-    COMMA           reduce using rule 27 (has_parameter -> ID COL WHITESPACE TYPE .)
-    RPAREN          reduce using rule 27 (has_parameter -> ID COL WHITESPACE TYPE .)
+    WHITESPACE      shift and go to state 69
 
 
 state 65
 
     (28) optional_return_type -> ARROW . WHITESPACE TYPE
 
-    WHITESPACE      shift and go to state 69
+    WHITESPACE      shift and go to state 70
 
 
 state 66
 
     (23) function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type . WHITESPACE LBRACE ENTER statements RBRACE
 
-    WHITESPACE      shift and go to state 70
+    WHITESPACE      shift and go to state 71
 
 
 state 67
 
-    (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ . WHITESPACE expression
+    (27) has_parameter -> ID COL WHITESPACE TYPE .
 
-    WHITESPACE      shift and go to state 71
+    COMMA           reduce using rule 27 (has_parameter -> ID COL WHITESPACE TYPE .)
+    RPAREN          reduce using rule 27 (has_parameter -> ID COL WHITESPACE TYPE .)
 
 
 state 68
@@ -769,20 +769,6 @@ state 68
 
 state 69
 
-    (28) optional_return_type -> ARROW WHITESPACE . TYPE
-
-    TYPE            shift and go to state 73
-
-
-state 70
-
-    (23) function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE . LBRACE ENTER statements RBRACE
-
-    LBRACE          shift and go to state 74
-
-
-state 71
-
     (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE . expression
     (15) expression -> . expression PLUS term
     (16) expression -> . expression MINUS term
@@ -793,12 +779,26 @@ state 71
     (21) factor -> . ID
     (22) factor -> . NUMBER
 
-    ID              shift and go to state 39
-    NUMBER          shift and go to state 37
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 40
 
-    expression                     shift and go to state 75
-    term                           shift and go to state 38
-    factor                         shift and go to state 36
+    expression                     shift and go to state 73
+    term                           shift and go to state 41
+    factor                         shift and go to state 42
+
+state 70
+
+    (28) optional_return_type -> ARROW WHITESPACE . TYPE
+
+    TYPE            shift and go to state 74
+
+
+state 71
+
+    (23) function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE . LBRACE ENTER statements RBRACE
+
+    LBRACE          shift and go to state 75
+
 
 state 72
 
@@ -809,27 +809,27 @@ state 72
 
 state 73
 
-    (28) optional_return_type -> ARROW WHITESPACE TYPE .
-
-    WHITESPACE      reduce using rule 28 (optional_return_type -> ARROW WHITESPACE TYPE .)
-
-
-state 74
-
-    (23) function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE . ENTER statements RBRACE
-
-    ENTER           shift and go to state 77
-
-
-state 75
-
     (13) declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression .
     (15) expression -> expression . PLUS term
     (16) expression -> expression . MINUS term
 
     ENTER           reduce using rule 13 (declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression .)
-    PLUS            shift and go to state 47
-    MINUS           shift and go to state 48
+    PLUS            shift and go to state 50
+    MINUS           shift and go to state 51
+
+
+state 74
+
+    (28) optional_return_type -> ARROW WHITESPACE TYPE .
+
+    WHITESPACE      reduce using rule 28 (optional_return_type -> ARROW WHITESPACE TYPE .)
+
+
+state 75
+
+    (23) function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE . ENTER statements RBRACE
+
+    ENTER           shift and go to state 77
 
 
 state 76
@@ -854,17 +854,17 @@ state 77
     (23) function_defination -> . FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
     (29) for_loop -> . FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
 
-    ID              shift and go to state 5
-    VAR             shift and go to state 7
-    FUNC            shift and go to state 2
-    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    VAR             shift and go to state 4
+    FUNC            shift and go to state 5
+    FOR             shift and go to state 6
 
-    function_defination            shift and go to state 3
-    assignment_statement           shift and go to state 1
-    for_loop                       shift and go to state 8
+    for_loop                       shift and go to state 9
     statements                     shift and go to state 79
-    declaration_statement          shift and go to state 6
-    statement                      shift and go to state 12
+    function_defination            shift and go to state 1
+    statement                      shift and go to state 2
+    assignment_statement           shift and go to state 12
+    declaration_statement          shift and go to state 3
 
 state 78
 
@@ -895,17 +895,17 @@ state 80
     (23) function_defination -> . FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE
     (29) for_loop -> . FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE
 
-    ID              shift and go to state 5
-    VAR             shift and go to state 7
-    FUNC            shift and go to state 2
-    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    VAR             shift and go to state 4
+    FUNC            shift and go to state 5
+    FOR             shift and go to state 6
 
-    function_defination            shift and go to state 3
-    assignment_statement           shift and go to state 1
-    for_loop                       shift and go to state 8
+    for_loop                       shift and go to state 9
     statements                     shift and go to state 82
-    declaration_statement          shift and go to state 6
-    statement                      shift and go to state 12
+    function_defination            shift and go to state 1
+    statement                      shift and go to state 2
+    declaration_statement          shift and go to state 3
+    assignment_statement           shift and go to state 12
 
 state 81
 
@@ -930,4 +930,4 @@ state 83
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for COMMA in state 55 resolved as shift
+WARNING: shift/reduce conflict for COMMA in state 57 resolved as shift

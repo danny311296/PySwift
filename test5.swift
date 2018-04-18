@@ -7,3 +7,7 @@ for i in 1...2 {
 var l = 2
 var x = l+1
 }
+for j in 1...2 {
+var f = 2
+var g = l+1
+}
