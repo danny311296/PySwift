@@ -1,7 +1,39 @@
-Node 1171283075
-		---assign		a     Node 1171283074
-		---expression		Node1171283074 operation + on Node1171283072 Node1171283073 ---expression Node1171283072 operation * on 2 3 ---expression Node1171283073 operation * on 4 5
-Node 1171283079
-		---assign		b     Node 1171283078
-		---expression		Node1171283078 operation + on Node1171283076 Node1171283077 ---expression Node1171283076 operation + on 3 3 ---expression Node1171283077 operation * on 7 6
-
+Node 1309726646
+		---assign		a     Node 1309726645
+		---expression		Node1309726645 operation + on Node1309726643 Node1309726644 ---expression Node1309726643 operation * on 2 3 ---expression Node1309726644 operation * on 4 5
+Node 1309726650
+		---assign		b     Node 1309726649
+		---expression		Node1309726649 operation + on Node1309726647 Node1309726648 ---expression Node1309726647 operation + on 3 3 ---expression Node1309726648 operation * on 7 6
+Node 1309726652
+		---assign		c     Node 1309726651
+		---expression		Node1309726651 operation + on a b
+Node 4049525223
+		---for-loop
+		---loop-control		Node1270044767 var i from 1 to 3
+Node 1309726654
+		---assign		x     Node 1309726653
+		---expression		Node1309726653 operation + on a b
+Node 1309726656
+		---assign		l     Node 1309726655
+		---expression		Node1309726655 operation + on 1 2
+Node 2841625774
+		---for-loop
+		---loop-control		Node694624997 var j from 2 to 5
+Node 1309726658
+		---assign		m     Node 1309726657
+		---expression		Node1309726657 operation + on b c
+EndOfFor
+EndOfFor
+Node 1309726665
+		---function-defination
+		 function a params Int Int returntype Int
+Node 1309726660
+		---assign		a1     Node 1309726659
+		---expression		Node1309726659 operation + on 2 2
+Node 1309726662
+		---assign		a2     Node 1309726661
+		---expression		Node1309726661 operation + on a1 1
+Node 1309726664
+		---assign		a3     Node 1309726663
+		---expression		Node1309726663 operation + on a1 a2
+EndofFunction

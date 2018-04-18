@@ -37,7 +37,6 @@ def p_next_statement(p):
 	else:
 		p[0] = str(p[1]) + '\n' + str(p[3])
 
-
 def p_statement(p):
 	'''statement : assignment_statement
 				| declaration_statement
@@ -119,27 +118,41 @@ def p_factor(p):
 	p[0] = p[1]
 
 def p_function_defination(p):
-	'function_defination : FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE'
-	node = ASTNode('function-defination',next(unique_sequence))
-	funNode = ASTFunctionDefinationNode(p[3],p[12])
-	node.addOperation(funNode)
-	p[0] = node
+    'function_defination : FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE'
+    node = ASTNode('function-defination',next(unique_sequence))
+    funNode = ASTFunctionDefinationNode(p[3], p[5], p[8], p[12])
+    node.addOperation(funNode)
+
+    p[0] = node
 
 def p_optional_parameters(p):
-	'''optional_parameters : has_parameter
+    '''optional_parameters : has_parameter
 						| empty'''
 
+    if len(p) == 2:
+        p[0] = p[1]
+
+
 def p_has_parameter(p):
-	'''has_parameter : has_parameter COMMA has_parameter
-						| ID COL WHITESPACE TYPE'''
+    '''has_parameter : has_parameter COMMA has_parameter
+						| ID COL TYPE'''
+
+    if p[2] == "," and len(p) == 4:
+        p[0] = " ".join([p[1], p[3]])
+    else:
+        p[0] = p[3]
+
 
 def p_optional_return_type(p):
-	'optional_return_type : ARROW WHITESPACE TYPE'
+    'optional_return_type : ARROW WHITESPACE TYPE'
+    # p[0] = p[2]
+    if len(p) == 4:
+        p[0] = p[3]
 
 def p_for_loop(p):
     'for_loop : FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE'
     node = ASTNode('for-loop', next(uniqueid()))
-    forNode = ASTForNode(p[3],p[7],p[9],p[13])
+    forNode = ASTForNode(p[3],p[7],p[9],p[13], next(uniqueid()))
     node.addOperation(forNode)
     p[0] = node
 

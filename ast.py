@@ -31,17 +31,21 @@ class ASTExpressionNode:
 		return "Node" + str(self.idNo) + " operation " + self.o  + " on " + "".join(str(self.l).split()[0:2]) + " " + "".join(str(self.r).split()[0:2]) + " " + str(" ".join(str(self.l).split()[2:])) + " " + str(" ".join(str(self.r).split()[2:]))
 
 class ASTFunctionDefinationNode:
-	def __init__(self,name,statements):
+	def __init__(self, name, paramertes, returntype, statements):
 		self.name = name
 		self.statements = statements
+		self.paramertes = paramertes
+		self.returntype = returntype
 	def __str__(self):
-		return " function " + self.name  + "\n" + "Beginning of Function\n" +  str(self.statements) + "End of Function"
+		return " function " + self.name + " params " + str(self.paramertes) + " returntype " + str(self.returntype) + "\n" +  str(self.statements) + "EndofFunction"
 
 class ASTForNode:
-	def __init__(self, variable, ivalue, fvalue, statements):
+	def __init__(self, variable, ivalue, fvalue, statements, idNo):
 		self.variable = variable
 		self.ivalue = ivalue
 		self.fvalue = fvalue
 		self.statements = statements
+		self.idNo = idNo
 	def __str__(self):
-		return "For statement " + self.variable + " " + str(self.ivalue) + " " + str(self.fvalue) + "\nBeginning of For Loop\n" + str(self.statements) + "End of For statement"
+		# return "For statement " + self.variable + " " + str(self.ivalue) + " " + str(self.fvalue) + "\nBeginning of For Loop\n" + str(self.statements) + "End of For statement"
+		return "---loop-control\t\t" + "Node" + str(self.idNo) + " var " + self.variable + " from " + str(self.ivalue) + " to " + str(self.fvalue) + "\n" + str(self.statements) + "EndOfFor"
