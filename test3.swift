@@ -8,7 +8,3 @@ var a1 = 2
 var a2 = a1
 var a3 = a1+a2
 }
-for i in 1...2 {
-var l = 2
-var x = l+1
-}

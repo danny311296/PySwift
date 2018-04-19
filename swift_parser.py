@@ -42,7 +42,8 @@ def p_statement(p):
 	'''statement : assignment_statement
 				| declaration_statement
 				| function_defination
-				| for_loop'''
+				| for_loop
+				| function_call'''
 	p[0] = p[1]
 
 def p_assignment_statement(p):
@@ -143,8 +144,18 @@ def p_for_loop(p):
     node.addOperation(forNode)
     p[0] = node
 
+def p_optional_ids(p):
+	'''optional_ids : ID 
+		| optional_ids COMMA optional_ids'''
+	pass
+
+def p_function_call(p):
+	''' function_call : ID LPAREN optional_ids RPAREN
+		| VAR WHITESPACE ID WHITESPACE EQ ID LPAREN optional_ids RPAREN
+		| ID WHITESPACE EQ ID LPAREN optional_ids RPAREN '''
+	pass
 parser = yacc.yacc()
 
 
-f = open('test5.swift','r')
+f = open('test7.swift','r')
 parser.parse(f.read())

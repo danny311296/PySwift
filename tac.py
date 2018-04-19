@@ -4,16 +4,18 @@ astFileText = list(filter(None,open('swift.ast','r').read().split('\n')))
 length = len(astFileText) 
 tempCount = 0
 i = 0
-labelCount = 0
+labelCount = -1
 dictionary = defaultdict(lambda: None)
 line = astFileText[i]
+f = open('tac.s','w')
+forloopStack = []
 
 def generateCodeForBasicStatement(line):
 	global tempCount,i
 	lhsvar = line.split()[1]
 	if(line.split()[2] != 'Node'):
 		rhs = line.split()[2]
-		print(lhsvar + ' = ' + rhs)
+		print(lhsvar + ' = ' + rhs,file=f)
 		i += 1
 	else:
 		expressions = str(" ".join(astFileText[i+1].split())).split('---expression')[1:]
@@ -31,13 +33,13 @@ def generateCodeForBasicStatement(line):
 					op1 = dictionary[op1]
 				if(op2.startswith('Node')):
 					op2 = dictionary[op2]				
-				print('t' + str(tempCount) + ' = ' + str(op1) + " " + op + " " + str(op2))
+				print('t' + str(tempCount) + ' = ' + str(op1) + " " + op + " " + str(op2),file=f)
 				dictionary[lhs] = 't' +str(tempCount)
-				print(lhsvar + ' = ' + 't' + str(tempCount) )
+				print(lhsvar + ' = ' + 't' + str(tempCount) ,file=f)
 				tempCount += 1
 				break
 			if(not(op1.startswith('Node')) and not(op2.startswith('Node'))):
-				print('t' + str(tempCount) + ' = ' + op1 + " " + op + " " + op2)
+				print('t' + str(tempCount) + ' = ' + op1 + " " + op + " " + op2,file=f)
 				dictionary[lhs] = 't' + str(tempCount)
 				tempCount += 1
 			else:
@@ -45,40 +47,58 @@ def generateCodeForBasicStatement(line):
 					op1 = dictionary[op1]
 				if(op2.startswith('Node')):
 					op2 = dictionary[op2]				
-				print('t' + str(tempCount) + ' = ' + str(op1) + " " + op + " " + str(op2))
+				print('t' + str(tempCount) + ' = ' + str(op1) + " " + op + " " + str(op2),file=f)
 				dictionary[lhs] = 't' + str(tempCount)
 				tempCount += 1
 		i += 2
 
 def generateCodeForForLoop(line):
-	global tempCount,i,labelCount
+	global tempCount,i,labelCount,forloopStack
 	var =  astFileText[i+1].split()[2]
 	initial = astFileText[i+1].split()[3]
 	final = astFileText[i+1].split()[4]
-	print(var + ' = ' + initial)
-	print("L" + str(labelCount) + ":")
+	print(var + ' = ' + initial,file=f)
+	labelCount += 1
+	print("L" + str(labelCount) + ":",file=f)
+	forloopStack.append(labelCount)
 	i += 4
 	l = astFileText[i]
 	while(1):
-		generateCodeForBasicStatement(astFileText[i])
+		generateCode(astFileText[i])
 		l = astFileText[i]
 		if(l == 'End of For statement'):
 			break
 		i += 1 
 		l = astFileText[i]
 	i += 1
-	print('t' + str(tempCount) + ' = ' + var + ' + 1')
-	print(var + ' = ' + 't' + str(tempCount)) 
+	print('t' + str(tempCount) + ' = ' + var + ' + 1',file=f)
+	print(var + ' = ' + 't' + str(tempCount),file=f) 
 	tempCount += 1 
-	print('if ' + var + ' <= ' + final + ' goto L' + str(labelCount))
-	labelCount += 1
+	print('if ' + var + ' <= ' + final + ' goto L' + str(forloopStack[len(forloopStack)-1]),file=f)
+	del forloopStack[len(forloopStack)-1]
+
+def generateCodeForFunctionDefination(line):
+	global tempCount,i,labelCount
+	name = astFileText[i+1].split()[1]
+	print('func begin ' + name,file = f)
+	i = i + 4
+	while(1):
+		generateCode(astFileText[i])
+		l = astFileText[i]
+		if(l == 'End of Function'):
+			break
+		i += 1 
+		l = astFileText[i]
+	print('func end',file = f)
+	i += 1
 
 def generateCode(line):
 	if(line.split()[0]=="---assign"):
 		generateCodeForBasicStatement(line)
 	elif(line.split()[0]=='---for-loop'):
 		generateCodeForForLoop(line)
-
+	elif(line.split()[0]=='---function-defination'):
+		generateCodeForFunctionDefination(line)
 
 while(1):
 	if(line.startswith("Node")):

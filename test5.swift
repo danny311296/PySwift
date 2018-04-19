@@ -11,3 +11,12 @@ for j in 1...2 {
 var f = 2
 var g = l+1
 }
+func a(c: Int,d: Int) -> Int {
+var a1 = 2
+var a2 = a1
+var a3 = a1+a2
+for pp in 1...2 {
+var aa = 2
+var bb = l+1
+}
+}
