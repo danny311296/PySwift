@@ -145,17 +145,30 @@ def p_for_loop(p):
     p[0] = node
 
 def p_optional_ids(p):
-	'''optional_ids : ID 
-		| optional_ids COMMA optional_ids'''
-	pass
+	'''optional_ids : empty
+		| has_id'''
+	p[0] = p[1]
+
+def p_has_id(p):
+	'''has_id : ID COMMA has_id
+		| ID '''
+	if(len(p)==2):
+		p[0] = p[1]
+	else:
+		p[0] = p[1] + ' & ' + p[3]
+	
 
 def p_function_call(p):
-	''' function_call : ID LPAREN optional_ids RPAREN
-		| VAR WHITESPACE ID WHITESPACE EQ ID LPAREN optional_ids RPAREN
-		| ID WHITESPACE EQ ID LPAREN optional_ids RPAREN '''
-	pass
+	''' function_call : ID LPAREN optional_ids RPAREN'''
+		#| VAR WHITESPACE ID WHITESPACE EQ WHITESPACE ID LPAREN optional_ids RPAREN
+		#| ID WHITESPACE EQ WHITESPACE ID LPAREN optional_ids RPAREN '''
+	node = ASTNode('function-call',next(unique_sequence))
+	funNode = ASTFunctionCallNode(p[1],p[3])
+	node.addOperation(funNode)
+	p[0] = node
+
 parser = yacc.yacc()
 
 
-f = open('test7.swift','r')
+f = open('test5.swift','r')
 parser.parse(f.read())

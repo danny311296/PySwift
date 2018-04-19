@@ -92,6 +92,14 @@ def generateCodeForFunctionDefination(line):
 	print('func end',file = f)
 	i += 1
 
+def generateCodeForFunctionCall(line):
+	global i
+	arguments = line.split('Arguments:')[1].strip().split('&')
+	for arg in arguments:
+		print('param ' + arg,file = f)
+	print('call ' + astFileText[i].split()[2] + ' , ' + str(len(arguments)),file = f)
+	i += 1
+
 def generateCode(line):
 	if(line.split()[0]=="---assign"):
 		generateCodeForBasicStatement(line)
@@ -99,6 +107,8 @@ def generateCode(line):
 		generateCodeForForLoop(line)
 	elif(line.split()[0]=='---function-defination'):
 		generateCodeForFunctionDefination(line)
+	elif(line.split()[0]=='---function-call'):
+		generateCodeForFunctionCall(line)
 
 while(1):
 	if(line.startswith("Node")):

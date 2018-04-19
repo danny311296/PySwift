@@ -1,28 +1,60 @@
-Node 1071739165
+Node 429887572
+		---assign		a     Node 429887571
+		---expression		Node429887571 operation + on Node429887569 Node429887570 ---expression Node429887569 operation * on Node429887568 5 ---expression Node429887568 operation * on 2 3 ---expression Node429887570 operation * on 6 7
+Node 429887573
+		---assign		b     45
+Node 429887575
+		---assign		c     Node 429887574
+		---expression		Node429887574 operation / on 3 4  
+Node 429887577
+		---assign		d     Node 429887576
+		---expression		Node429887576 operation + on 4 3  
+Node 429887578
+		---assign		d     100
+Node 1378936417
 		---for-loop
 		For statement i 1 2
 Beginning of For Loop
-Node 1701492896
+Node 429887579
 		---assign		l     2
-Node 1701492898
-		---assign		x     Node 1701492897
-		---expression		Node1701492897 operation + on l 1  
-Node 2816206613
+Node 429887581
+		---assign		x     Node 429887580
+		---expression		Node429887580 operation + on l 1  
+End of For statement
+Node 2832374707
+		---for-loop
+		For statement j 1 2
+Beginning of For Loop
+Node 429887582
+		---assign		f     2
+Node 429887584
+		---assign		g     Node 429887583
+		---expression		Node429887583 operation + on l 1  
+End of For statement
+Node 429887592
+		---function-defination
+		 function a
+Beginning of Function
+Node 429887585
+		---assign		a1     2
+Node 429887586
+		---assign		a2     a1
+Node 429887588
+		---assign		a3     Node 429887587
+		---expression		Node429887587 operation + on a1 a2  
+Node 3781336474
 		---for-loop
 		For statement pp 1 2
 Beginning of For Loop
-Node 1701492899
+Node 429887589
 		---assign		aa     2
-Node 1701492901
-		---assign		bb     Node 1701492900
-		---expression		Node1701492900 operation + on l 1  
-Node 4254251928
-		---for-loop
-		For statement d 1 2
-Beginning of For Loop
-Node 1701492902
-		---assign		dd     100
+Node 429887591
+		---assign		bb     Node 429887590
+		---expression		Node429887590 operation + on l 1  
 End of For statement
-End of For statement
-End of For statement
+End of Function
+Node 429887593
+		---function-call		call a - Arguments: rr & tt & lp
+Node 429887594
+		---function-call		call b - Arguments: lll
 

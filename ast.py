@@ -45,3 +45,10 @@ class ASTForNode:
 		self.statements = statements
 	def __str__(self):
 		return "For statement " + self.variable + " " + str(self.ivalue) + " " + str(self.fvalue) + "\nBeginning of For Loop\n" + str(self.statements) + "End of For statement"
+
+class ASTFunctionCallNode:
+	def __init__(self,fnName,arguments):
+		self.fnName = fnName
+		self.arguments = arguments
+	def __str__(self):
+		return "call " + self.fnName + " - Arguments: " + self.arguments
