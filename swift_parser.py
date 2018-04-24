@@ -2,6 +2,7 @@ import ply.yacc as yacc
 import random
 from ast import *
 
+import sys
 from swift_lexer import tokens
 from collections import defaultdict
 
@@ -170,5 +171,5 @@ def p_function_call(p):
 parser = yacc.yacc()
 
 
-f = open('test5.swift','r')
+f = open(sys.argv[1],'r')
 parser.parse(f.read())

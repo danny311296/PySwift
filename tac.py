@@ -7,7 +7,7 @@ i = 0
 labelCount = -1
 dictionary = defaultdict(lambda: None)
 line = astFileText[i]
-f = open('tac.s','w')
+f = open('tac.s','w+')
 forloopStack = []
 
 def generateCodeForBasicStatement(line):
