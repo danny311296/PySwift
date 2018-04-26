@@ -1,60 +1,16 @@
-Node 2661222833
-		---assign		a     Node 2661222832
-		---expression		Node2661222832 operation + on Node2661222830 Node2661222831 ---expression Node2661222830 operation * on Node2661222829 5 ---expression Node2661222829 operation * on 2 3 ---expression Node2661222831 operation * on 6 7
-Node 2661222834
-		---assign		b     45
-Node 2661222836
-		---assign		c     Node 2661222835
-		---expression		Node2661222835 operation / on 3 4  
-Node 2661222838
-		---assign		d     Node 2661222837
-		---expression		Node2661222837 operation + on 4 3  
-Node 2661222839
-		---assign		d     100
-Node 84524876
-		---for-loop
-		For statement i 1 2
-Beginning of For Loop
-Node 2661222840
-		---assign		l     2
-Node 2661222842
-		---assign		x     Node 2661222841
-		---expression		Node2661222841 operation + on l 1  
-End of For statement
-Node 2420974896
-		---for-loop
-		For statement j 1 2
-Beginning of For Loop
-Node 2661222843
-		---assign		f     2
-Node 2661222845
-		---assign		g     Node 2661222844
-		---expression		Node2661222844 operation + on f 1  
-End of For statement
-Node 2661222853
+Node 1894809579
+		---assign		a     Node 1894809578
+		---expression		Node1894809578 operation + on 2 3  
+Node 1894809584
 		---function-defination
 		 function a
 Beginning of Function
-Node 2661222846
-		---assign		a1     2
-Node 2661222847
-		---assign		a2     a1
-Node 2661222849
-		---assign		a3     Node 2661222848
-		---expression		Node2661222848 operation + on a1 a2  
-Node 315328442
-		---for-loop
-		For statement pp 1 2
-Beginning of For Loop
-Node 2661222850
-		---assign		aa     2
-Node 2661222852
-		---assign		bb     Node 2661222851
-		---expression		Node2661222851 operation + on l 1  
-End of For statement
+Node 1894809580
+		---assign		b     2
+Node 1894809581
+		---assign		c     b
+Node 1894809583
+		---assign		d     Node 1894809582
+		---expression		Node1894809582 operation + on b c  
 End of Function
-Node 2661222854
-		---function-call		call a - Arguments: rr & tt & lp
-Node 2661222855
-		---function-call		call b - Arguments: lll
 
