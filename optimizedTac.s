@@ -45,10 +45,3 @@ param  lp
 call a , 3
 param lll
 call b , 1
-aram lll
-call b , 1
- b , 1
-, 1
-aram lll
-call b , 1
-call b , 1

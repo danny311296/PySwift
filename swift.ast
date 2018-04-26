@@ -1,16 +1,60 @@
-Node 1894809579
-		---assign		a     Node 1894809578
-		---expression		Node1894809578 operation + on 2 3  
-Node 1894809584
+Node 312687655
+		---assign		a     Node 312687654
+		---expression		Node312687654 operation + on Node312687652 Node312687653 ---expression Node312687652 operation * on Node312687651 5 ---expression Node312687651 operation * on 2 3 ---expression Node312687653 operation * on 6 7
+Node 312687656
+		---assign		b     45
+Node 312687658
+		---assign		c     Node 312687657
+		---expression		Node312687657 operation / on 3 4  
+Node 312687660
+		---assign		d     Node 312687659
+		---expression		Node312687659 operation + on 4 3  
+Node 312687661
+		---assign		d     100
+Node 1836539083
+		---for-loop
+		For statement i 1 2
+Beginning of For Loop
+Node 312687662
+		---assign		l     2
+Node 312687664
+		---assign		x     Node 312687663
+		---expression		Node312687663 operation + on l 1  
+End of For statement
+Node 3381564549
+		---for-loop
+		For statement j 1 2
+Beginning of For Loop
+Node 312687665
+		---assign		f     2
+Node 312687667
+		---assign		g     Node 312687666
+		---expression		Node312687666 operation + on f 1  
+End of For statement
+Node 312687675
 		---function-defination
 		 function a
 Beginning of Function
-Node 1894809580
-		---assign		b     2
-Node 1894809581
-		---assign		c     b
-Node 1894809583
-		---assign		d     Node 1894809582
-		---expression		Node1894809582 operation + on b c  
+Node 312687668
+		---assign		a1     2
+Node 312687669
+		---assign		a2     a1
+Node 312687671
+		---assign		a3     Node 312687670
+		---expression		Node312687670 operation + on a1 a2  
+Node 2945375314
+		---for-loop
+		For statement pp 1 2
+Beginning of For Loop
+Node 312687672
+		---assign		aa     2
+Node 312687674
+		---assign		bb     Node 312687673
+		---expression		Node312687673 operation + on l 1  
+End of For statement
 End of Function
+Node 312687676
+		---function-call		call a - Arguments: rr & tt & lp
+Node 312687677
+		---function-call		call b - Arguments: lll
 

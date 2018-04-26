@@ -11,6 +11,7 @@ outputFile2.seek(0)
 #Constant Folding optimisation
 def constantFolding():
 	outputFile.seek(0)
+	outputFile.truncate()
 	outputFile2.seek(0)
 	for line in outputFile2:
 		if '=' in line and 'goto' not in line:
@@ -31,6 +32,7 @@ dictionary = defaultdict(lambda: None)
 def constantPropagation():
 	outputFile.seek(0)
 	outputFile2.seek(0)
+	outputFile2.truncate()
 	for line in outputFile:
 		if "=" in line and "goto" not in line:
 			lhs = line.split('=')[0].strip()
@@ -66,7 +68,8 @@ def constantPropagation():
 				else:
 					print(t2,file=outputFile2)
 		else:
-			print(line,end='',file=outputFile2)		
+			print(line,end='',file=outputFile2)	
+	outputFile.seek(0)
 
 try:
 	for i in range(int(sys.argv[1])):
@@ -85,4 +88,5 @@ except: # if argv[1] is not provided
 		outputFile2.seek(0)
 		curr = outputFile2.read()
 		outputFile2.seek(0)
-	print('Number of folding-propagation performed: ' , i - 1)
+	print('Number of folding-propagation performed: ' , i )
+	print('Number of times that guarantees optimized code: ',i-1)
