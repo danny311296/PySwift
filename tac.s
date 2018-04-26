@@ -20,7 +20,7 @@ if i <= 2 goto L0
 j = 1
 L1:
 f = 2
-t8 = l + 1
+t8 = f + 1
 g = t8
 t9 = j + 1
 j = t9

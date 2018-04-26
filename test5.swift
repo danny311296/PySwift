@@ -9,7 +9,7 @@ var x = l+1
 }
 for j in 1...2 {
 var f = 2
-var g = l+1
+var g = f+1
 }
 func a(c: Int,d: Int) -> Int {
 var a1 = 2
