@@ -5,9 +5,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'NUMBER ID WHITESPACE ENTER EQ COL PLUS MINUS TIMES DIVIDE LPAREN RPAREN LBRACE RBRACE ARROW COMMA TRIPLEDOT TYPE FUNC TYPE VAR TYPE FOR INstart : statements\n\t\t\t| emptyempty :statements : statement ENTER next_statementnext_statement : statement ENTER next_statement\n\t\t\t\t\t| emptystatement : assignment_statement\n\t\t\t\t| declaration_statement\n\t\t\t\t| function_defination\n\t\t\t\t| for_loop\n\t\t\t\t| function_callassignment_statement : ID WHITESPACE EQ WHITESPACE expressiondeclaration_statement : VAR WHITESPACE ID COL WHITESPACE TYPE\n\t\t\t\t\t\t\t| VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression\n\t\t\t\t\t\t\t| VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression expression : expression PLUS term\n\t\t\t\t| expression MINUS term\n\t\t\t\t| term\n\t\t\t\tterm : term TIMES factor\n\t\t\t| term DIVIDE factor\n\t\t\t| factor\n\tfactor : ID\n\t\t\t| NUMBER\n\tfunction_defination : FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACEoptional_parameters : has_parameter\n\t\t\t\t\t\t| emptyhas_parameter : has_parameter COMMA has_parameter\n\t\t\t\t\t\t| ID COL WHITESPACE TYPEoptional_return_type : ARROW WHITESPACE TYPEfor_loop : FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACEoptional_ids : empty\n\t\t| has_idhas_id : ID COMMA has_id\n\t\t| ID  function_call : ID LPAREN optional_ids RPAREN'
+_lr_signature = 'NUMBER ID WHITESPACE ENTER EQ COL PLUS MINUS TIMES DIVIDE LPAREN RPAREN LBRACE RBRACE ARROW COMMA TRIPLEDOT TYPE TYPE FUNC IN TYPE FOR VARstart : statements\n\t\t\t| emptyempty :statements : statement ENTER next_statementnext_statement : statement ENTER next_statement\n\t\t\t\t\t| emptystatement : assignment_statement\n\t\t\t\t| declaration_statement\n\t\t\t\t| function_defination\n\t\t\t\t| for_loop\n\t\t\t\t| function_callassignment_statement : ID WHITESPACE EQ WHITESPACE expressiondeclaration_statement : VAR WHITESPACE ID COL WHITESPACE TYPE\n\t\t\t\t\t\t\t| VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression\n\t\t\t\t\t\t\t| VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression expression : expression PLUS term\n\t\t\t\t| expression MINUS term\n\t\t\t\t| term\n\t\t\t\tterm : term TIMES factor\n\t\t\t| term DIVIDE factor\n\t\t\t| factor\n\tfactor : ID\n\t\t\t| NUMBER\n\tfunction_defination : FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACEoptional_parameters : has_parameter\n\t\t\t\t\t\t| emptyhas_parameter : has_parameter COMMA has_parameter\n\t\t\t\t\t\t| ID COL WHITESPACE TYPEoptional_return_type : ARROW WHITESPACE TYPEfor_loop : FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACEoptional_ids : empty\n\t\t| has_idhas_id : ID COMMA has_id\n\t\t| ID  function_call : ID LPAREN optional_ids RPAREN'
     
-_lr_action_items = {'IN':([31,],[39,]),'WHITESPACE':([3,5,8,10,20,21,30,37,39,52,59,60,61,74,75,77,78,84,],[14,15,18,19,31,32,38,51,53,62,69,70,71,79,80,81,82,-29,]),'EQ':([15,38,71,],[21,52,77,]),'MINUS':([40,41,42,43,44,64,65,66,67,72,85,],[-23,54,-21,-22,-18,-17,-16,-19,-20,54,54,]),'COL':([30,50,],[37,60,]),'LPAREN':([5,29,],[16,36,]),'ENTER':([1,7,9,11,12,13,28,33,40,41,42,43,44,61,64,65,66,67,72,83,85,86,91,92,],[-11,17,-10,-8,-9,-7,35,-35,-23,-12,-21,-22,-18,-13,-17,-16,-19,-20,-15,87,-14,88,-24,-30,]),'FOR':([0,17,35,87,88,],[3,3,3,3,3,]),'ID':([0,14,16,17,18,19,32,34,35,36,54,55,56,57,58,62,81,87,88,],[5,20,24,5,29,30,43,24,5,50,43,43,43,43,50,43,43,5,5,]),'TIMES':([40,42,43,44,64,65,66,67,],[-23,-21,-22,56,56,56,-19,-20,]),'DIVIDE':([40,42,43,44,64,65,66,67,],[-23,-21,-22,57,57,57,-19,-20,]),'COMMA':([24,47,68,76,],[34,58,58,-28,]),'LBRACE':([79,82,],[83,86,]),'$end':([0,2,4,6,17,26,27,35,46,],[-3,-1,0,-2,-3,-4,-6,-3,-5,]),'TYPE':([51,70,80,],[61,76,84,]),'FUNC':([0,17,35,87,88,],[8,8,8,8,8,]),'RPAREN':([16,22,23,24,25,36,45,47,48,49,68,76,],[-3,-31,33,-34,-32,-3,-33,-25,-26,59,-27,-28,]),'ARROW':([69,],[75,]),'NUMBER':([32,53,54,55,56,57,62,73,81,],[40,63,40,40,40,40,40,78,40,]),'VAR':([0,17,35,87,88,],[10,10,10,10,10,]),'TRIPLEDOT':([63,],[73,]),'RBRACE':([17,26,27,35,46,89,90,],[-3,-4,-6,-3,-5,91,92,]),'PLUS':([40,41,42,43,44,64,65,66,67,72,85,],[-23,55,-21,-22,-18,-17,-16,-19,-20,55,55,]),}
+_lr_action_items = {'IN':([38,],[52,]),'PLUS':([45,46,47,48,49,67,68,69,70,71,84,],[-22,59,-21,-23,-18,59,-17,-16,-19,-20,59,]),'FUNC':([0,18,37,86,89,],[2,2,2,2,2,]),'LPAREN':([6,20,],[17,31,]),'COMMA':([25,42,65,73,],[36,55,55,-28,]),'RBRACE':([18,27,29,37,51,88,91,],[-3,-4,-6,-3,-5,90,92,]),'VAR':([0,18,37,86,89,],[5,5,5,5,5,]),'ID':([0,14,15,17,18,19,31,34,36,37,55,57,58,59,60,61,80,86,89,],[6,20,21,25,6,30,40,45,25,6,40,45,45,45,45,45,45,6,6,]),'TRIPLEDOT':([72,],[77,]),'WHITESPACE':([2,5,6,13,21,22,30,32,44,52,53,54,56,74,75,76,81,82,],[14,15,16,19,33,34,38,43,57,62,63,64,66,78,79,80,85,-29,]),'RPAREN':([17,23,24,25,26,31,39,41,42,50,65,73,],[-3,35,-32,-34,-31,-3,-26,54,-25,-33,-27,-28,]),'DIVIDE':([45,47,48,49,68,69,70,71,],[-22,-21,-23,61,61,61,-19,-20,]),'FOR':([0,18,37,86,89,],[13,13,13,13,13,]),'$end':([0,9,10,11,18,27,29,37,51,],[-3,-2,0,-1,-3,-4,-6,-3,-5,]),'ARROW':([64,],[74,]),'LBRACE':([79,85,],[83,87,]),'TYPE':([43,63,78,],[56,73,82,]),'EQ':([16,33,66,],[22,44,76,]),'COL':([21,40,],[32,53,]),'ENTER':([1,3,4,7,8,12,28,35,45,46,47,48,49,56,67,68,69,70,71,83,84,87,90,92,],[-8,-7,-9,18,-11,-10,37,-35,-22,-12,-21,-23,-18,-13,-15,-17,-16,-19,-20,86,-14,89,-24,-30,]),'MINUS':([45,46,47,48,49,67,68,69,70,71,84,],[-22,58,-21,-23,-18,58,-17,-16,-19,-20,58,]),'NUMBER':([34,57,58,59,60,61,62,77,80,],[48,48,48,48,48,48,72,81,48,]),'TIMES':([45,47,48,49,68,69,70,71,],[-22,-21,-23,60,60,60,-19,-20,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'function_call':([0,17,35,87,88,],[1,1,1,1,1,]),'empty':([0,16,17,35,36,],[6,22,27,27,48,]),'statement':([0,17,35,87,88,],[7,28,28,7,7,]),'has_id':([16,34,],[25,45,]),'for_loop':([0,17,35,87,88,],[9,9,9,9,9,]),'optional_return_type':([69,],[74,]),'statements':([0,87,88,],[2,89,90,]),'optional_parameters':([36,],[49,]),'term':([32,54,55,62,81,],[44,64,65,44,44,]),'has_parameter':([36,58,],[47,68,]),'expression':([32,62,81,],[41,72,85,]),'factor':([32,54,55,56,57,62,81,],[42,42,42,66,67,42,42,]),'start':([0,],[4,]),'declaration_statement':([0,17,35,87,88,],[11,11,11,11,11,]),'function_defination':([0,17,35,87,88,],[12,12,12,12,12,]),'next_statement':([17,35,],[26,46,]),'assignment_statement':([0,17,35,87,88,],[13,13,13,13,13,]),'optional_ids':([16,],[23,]),}
+_lr_goto_items = {'optional_ids':([17,],[23,]),'has_id':([17,36,],[24,50,]),'declaration_statement':([0,18,37,86,89,],[1,1,1,1,1,]),'start':([0,],[10,]),'for_loop':([0,18,37,86,89,],[12,12,12,12,12,]),'optional_return_type':([64,],[75,]),'statements':([0,86,89,],[11,88,91,]),'term':([34,57,58,59,80,],[49,49,68,69,49,]),'optional_parameters':([31,],[41,]),'assignment_statement':([0,18,37,86,89,],[3,3,3,3,3,]),'function_defination':([0,18,37,86,89,],[4,4,4,4,4,]),'expression':([34,57,80,],[46,67,84,]),'next_statement':([18,37,],[27,51,]),'factor':([34,57,58,59,60,61,80,],[47,47,47,47,70,71,47,]),'statement':([0,18,37,86,89,],[7,28,28,7,7,]),'empty':([0,17,18,31,37,],[9,26,29,39,29,]),'has_parameter':([31,55,],[42,65,]),'function_call':([0,18,37,86,89,],[8,8,8,8,8,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -28,37 +28,37 @@ _lr_productions = [
   ("S' -> start","S'",1,None,None,None),
   ('start -> statements','start',1,'p_start','swift_parser.py',21),
   ('start -> empty','start',1,'p_start','swift_parser.py',22),
-  ('empty -> <empty>','empty',0,'p_empty','swift_parser.py',26),
-  ('statements -> statement ENTER next_statement','statements',3,'p_statements','swift_parser.py',30),
-  ('next_statement -> statement ENTER next_statement','next_statement',3,'p_next_statement','swift_parser.py',34),
-  ('next_statement -> empty','next_statement',1,'p_next_statement','swift_parser.py',35),
-  ('statement -> assignment_statement','statement',1,'p_statement','swift_parser.py',43),
-  ('statement -> declaration_statement','statement',1,'p_statement','swift_parser.py',44),
-  ('statement -> function_defination','statement',1,'p_statement','swift_parser.py',45),
-  ('statement -> for_loop','statement',1,'p_statement','swift_parser.py',46),
-  ('statement -> function_call','statement',1,'p_statement','swift_parser.py',47),
-  ('assignment_statement -> ID WHITESPACE EQ WHITESPACE expression','assignment_statement',5,'p_assignment_statement','swift_parser.py',51),
-  ('declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE','declaration_statement',6,'p_declaration_statement','swift_parser.py',62),
-  ('declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression','declaration_statement',10,'p_declaration_statement','swift_parser.py',63),
-  ('declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression','declaration_statement',7,'p_declaration_statement','swift_parser.py',64),
-  ('expression -> expression PLUS term','expression',3,'p_expression','swift_parser.py',90),
-  ('expression -> expression MINUS term','expression',3,'p_expression','swift_parser.py',91),
-  ('expression -> term','expression',1,'p_expression','swift_parser.py',92),
-  ('term -> term TIMES factor','term',3,'p_term','swift_parser.py',104),
-  ('term -> term DIVIDE factor','term',3,'p_term','swift_parser.py',105),
-  ('term -> factor','term',1,'p_term','swift_parser.py',106),
-  ('factor -> ID','factor',1,'p_factor','swift_parser.py',118),
-  ('factor -> NUMBER','factor',1,'p_factor','swift_parser.py',119),
-  ('function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE','function_defination',13,'p_function_defination','swift_parser.py',124),
-  ('optional_parameters -> has_parameter','optional_parameters',1,'p_optional_parameters','swift_parser.py',131),
-  ('optional_parameters -> empty','optional_parameters',1,'p_optional_parameters','swift_parser.py',132),
-  ('has_parameter -> has_parameter COMMA has_parameter','has_parameter',3,'p_has_parameter','swift_parser.py',135),
-  ('has_parameter -> ID COL WHITESPACE TYPE','has_parameter',4,'p_has_parameter','swift_parser.py',136),
-  ('optional_return_type -> ARROW WHITESPACE TYPE','optional_return_type',3,'p_optional_return_type','swift_parser.py',139),
-  ('for_loop -> FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE','for_loop',14,'p_for_loop','swift_parser.py',142),
-  ('optional_ids -> empty','optional_ids',1,'p_optional_ids','swift_parser.py',149),
-  ('optional_ids -> has_id','optional_ids',1,'p_optional_ids','swift_parser.py',150),
-  ('has_id -> ID COMMA has_id','has_id',3,'p_has_id','swift_parser.py',154),
-  ('has_id -> ID','has_id',1,'p_has_id','swift_parser.py',155),
-  ('function_call -> ID LPAREN optional_ids RPAREN','function_call',4,'p_function_call','swift_parser.py',163),
+  ('empty -> <empty>','empty',0,'p_empty','swift_parser.py',27),
+  ('statements -> statement ENTER next_statement','statements',3,'p_statements','swift_parser.py',31),
+  ('next_statement -> statement ENTER next_statement','next_statement',3,'p_next_statement','swift_parser.py',35),
+  ('next_statement -> empty','next_statement',1,'p_next_statement','swift_parser.py',36),
+  ('statement -> assignment_statement','statement',1,'p_statement','swift_parser.py',44),
+  ('statement -> declaration_statement','statement',1,'p_statement','swift_parser.py',45),
+  ('statement -> function_defination','statement',1,'p_statement','swift_parser.py',46),
+  ('statement -> for_loop','statement',1,'p_statement','swift_parser.py',47),
+  ('statement -> function_call','statement',1,'p_statement','swift_parser.py',48),
+  ('assignment_statement -> ID WHITESPACE EQ WHITESPACE expression','assignment_statement',5,'p_assignment_statement','swift_parser.py',52),
+  ('declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE','declaration_statement',6,'p_declaration_statement','swift_parser.py',64),
+  ('declaration_statement -> VAR WHITESPACE ID COL WHITESPACE TYPE WHITESPACE EQ WHITESPACE expression','declaration_statement',10,'p_declaration_statement','swift_parser.py',65),
+  ('declaration_statement -> VAR WHITESPACE ID WHITESPACE EQ WHITESPACE expression','declaration_statement',7,'p_declaration_statement','swift_parser.py',66),
+  ('expression -> expression PLUS term','expression',3,'p_expression','swift_parser.py',98),
+  ('expression -> expression MINUS term','expression',3,'p_expression','swift_parser.py',99),
+  ('expression -> term','expression',1,'p_expression','swift_parser.py',100),
+  ('term -> term TIMES factor','term',3,'p_term','swift_parser.py',112),
+  ('term -> term DIVIDE factor','term',3,'p_term','swift_parser.py',113),
+  ('term -> factor','term',1,'p_term','swift_parser.py',114),
+  ('factor -> ID','factor',1,'p_factor','swift_parser.py',126),
+  ('factor -> NUMBER','factor',1,'p_factor','swift_parser.py',127),
+  ('function_defination -> FUNC WHITESPACE ID LPAREN optional_parameters RPAREN WHITESPACE optional_return_type WHITESPACE LBRACE ENTER statements RBRACE','function_defination',13,'p_function_defination','swift_parser.py',132),
+  ('optional_parameters -> has_parameter','optional_parameters',1,'p_optional_parameters','swift_parser.py',139),
+  ('optional_parameters -> empty','optional_parameters',1,'p_optional_parameters','swift_parser.py',140),
+  ('has_parameter -> has_parameter COMMA has_parameter','has_parameter',3,'p_has_parameter','swift_parser.py',143),
+  ('has_parameter -> ID COL WHITESPACE TYPE','has_parameter',4,'p_has_parameter','swift_parser.py',144),
+  ('optional_return_type -> ARROW WHITESPACE TYPE','optional_return_type',3,'p_optional_return_type','swift_parser.py',147),
+  ('for_loop -> FOR WHITESPACE ID WHITESPACE IN WHITESPACE NUMBER TRIPLEDOT NUMBER WHITESPACE LBRACE ENTER statements RBRACE','for_loop',14,'p_for_loop','swift_parser.py',150),
+  ('optional_ids -> empty','optional_ids',1,'p_optional_ids','swift_parser.py',157),
+  ('optional_ids -> has_id','optional_ids',1,'p_optional_ids','swift_parser.py',158),
+  ('has_id -> ID COMMA has_id','has_id',3,'p_has_id','swift_parser.py',162),
+  ('has_id -> ID','has_id',1,'p_has_id','swift_parser.py',163),
+  ('function_call -> ID LPAREN optional_ids RPAREN','function_call',4,'p_function_call','swift_parser.py',171),
 ]

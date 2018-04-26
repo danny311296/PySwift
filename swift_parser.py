@@ -21,6 +21,7 @@ def p_start(p):
 	'''start : statements
 			| empty'''
 	print(p[1],file=astFile)
+	print(symbol_table)
 
 def p_empty(p):
 	'empty :'
@@ -53,6 +54,7 @@ def p_assignment_statement(p):
 		node = ASTNode("assign",next(unique_sequence))
 		assignNode = ASTAssignmentNode(p[1],p[5])
 		node.addOperation(assignNode)
+		symbol_table[p[1]]["value"] = "initialized"
 		p[0] = node
 	else:
 		print("Error: Variable not declared")
@@ -71,20 +73,26 @@ def p_declaration_statement(p):
 	elif(len(p)==11):
 		symbol_table[p[3]] = {}
 		symbol_table[p[3]]["type"] = p[6]
-		symbol_table[p[3]]["value"] = p[10]
+		symbol_table[p[3]]["value"] = "initialized"
+		if(p[6]=="Int"):
+			symbol_table[p[3]]["storage"] = 4
+		elif(p[6]=="Float"):
+			symbol_table[p[3]]["storage"] = 8
+		else:
+			print('Error: No such type ' , p[6])
+			symbol_table[p[3]]["storage"] = 4
 		node = ASTNode("assign",next(unique_sequence))
 		assignNode = ASTAssignmentNode(p[3],p[10])
 		node.addOperation(assignNode)
 		p[0] = node
 	else:
 		symbol_table[p[3]] = {}
-		symbol_table[p[3]]["value"] = p[7]
+		symbol_table[p[3]]["value"] = "initialized"
 		symbol_table[p[3]]["type"] = "Int"
 		node = ASTNode("assign",next(unique_sequence))
 		assignNode = ASTAssignmentNode(p[3],p[7])
 		node.addOperation(assignNode)
 		p[0] = node
-	#print(symbol_table)
 
 def p_expression(p):
 	'''expression : expression PLUS term
