@@ -12,7 +12,7 @@ of the Swift Programming Language
 
 ### Prerequisites
 
-* Python2 
+* Python3
 
 ## Working
 The compiler does the following tasks during various phases
@@ -34,9 +34,9 @@ The compiler does the following tasks during various phases
 
 ## Running
 
-    python swift_parser.py <swift_file>
-    python tac.py
-    python optimize.py
+    python3 swift_parser.py <swift_file>
+    python3 tac.py
+    python3 optimize.py
 
 ## Authors
 
