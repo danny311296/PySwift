@@ -1,6 +1,6 @@
 # Swift Compiler
 
-A compiler for the Swift Programming Language. 
+Implementation of the front-end of a compiler for the Swift Programming Language. 
 
 ## About The Project
 
@@ -14,42 +14,29 @@ of the Swift Programming Language
 
 * Python2 
 
-### To DO
+## Working
+The compiler does the following tasks during various phases
+### Phase 1: Lexical Analysis 
+* Removal of single and multi line comments
+* Conversion of the Swift source code into a stream of tokens
+### Phase 2: Syntax Analysis 
+* Parse the token stream generated from the lexical analyser and check if it is accepted as per the grammar defined by the language
+* Creation of the Abstract Syntax Tree(AST) is done in this phase
+### Phase 3: Semantic Analysis 
+* For assignments of the form a = value , check if variable a was already declared else gives error
+* For declarations like var a: Int , gives error if variable a was already declared
+* Type Checking
+* Function Parameters / Return Types
+### Phase 4: TAC Generation 
+* The AST generated is put into use in the generation of the TAC for the Swift Source program.
+### Phase 5: TAC Optimisation
+* Optimisations like Constant Folding, Constant Propagation, Loop Unrolling were performed to generate an optimised TAC.
 
-* Intermediate code generation
-* Code optimisation
+## Running
 
-## Running (TO DO)
-
-Will update.
-
-
-
-## Example of Code it accepts
-
-    var a = 2
-    func a(c: Int,d: Int) -> Int {
-    // hi
-    var b = 2
-    //bye
-    /* wh
-    a */
-    }
-    for i in 1...2 {
-    var c = 2
-    }
-    
-Can handle 
-* Variable declarations and assignments
-* Single and Multi Line comment removal
-* For Loops
-* Functions
-
-
-
-## Example Output( TO DO)
-
-Will update
+    python swift_parser.py
+    python tac.py
+    python optimize.py
 
 ## Authors
 
@@ -61,5 +48,4 @@ Will update
 ## Acknowledgments
 
 * We would like to thank our Compiler Design teacher Prof. C O Prakasha for guiding us in this project
-
 
