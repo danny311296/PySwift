@@ -34,7 +34,7 @@ The compiler does the following tasks during various phases
 
 ## Running
 
-    python swift_parser.py
+    python swift_parser.py <swift_file>
     python tac.py
     python optimize.py
 
